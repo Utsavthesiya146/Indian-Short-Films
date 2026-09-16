@@ -1,12 +1,13 @@
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getFilmBySlug } from '@/lib/supabase';
 import { VideoPlayer } from '@/components/VideoPlayer';
 import { ReviewSection } from '@/components/ReviewSection';
 import { CommentSection } from '@/components/CommentSection';
-import { Star, Clock, Globe, Share2, Heart, Plus, Award, UserCheck, ShieldCheck } from 'lucide-react';
+import { FilmActions } from '@/components/FilmActions';
+import { FollowButton } from '@/components/FollowButton';
+import { Star, Clock, ShieldCheck } from 'lucide-react';
 
 interface FilmDetailsProps {
   params: { slug: string };
@@ -76,18 +77,12 @@ export default async function FilmDetailsPage({ params }: FilmDetailsProps) {
             </div>
           </div>
 
-          {/* Action Row */}
-          <div className="flex flex-wrap items-center gap-3 pt-2 pb-4 border-b border-cinema-border">
-            <button className="px-5 py-2.5 rounded-xl bg-cinema-surface hover:bg-cinema-card text-white border border-cinema-border text-xs font-semibold flex items-center gap-2 transition-all">
-              <Heart className="w-4 h-4 text-cinema-accent fill-cinema-accent" /> Like ({film.likes_count})
-            </button>
-            <button className="px-5 py-2.5 rounded-xl bg-cinema-surface hover:bg-cinema-card text-white border border-cinema-border text-xs font-semibold flex items-center gap-2 transition-all">
-              <Plus className="w-4 h-4 text-cinema-gold" /> Add to Watchlist
-            </button>
-            <button className="px-5 py-2.5 rounded-xl bg-cinema-surface hover:bg-cinema-card text-white border border-cinema-border text-xs font-semibold flex items-center gap-2 transition-all">
-              <Share2 className="w-4 h-4" /> Share
-            </button>
-          </div>
+          {/* Interactive Action Row */}
+          <FilmActions
+            filmId={film.id}
+            filmTitle={film.title}
+            initialLikesCount={film.likes_count}
+          />
 
           {/* Synopsis */}
           <div>
@@ -153,9 +148,8 @@ export default async function FilmDetailsPage({ params }: FilmDetailsProps) {
                 <span className="text-xs text-cinema-muted">Independent Filmmaker</span>
               </div>
             </div>
-            <button className="w-full py-2 rounded-xl bg-cinema-surface hover:bg-cinema-border text-xs font-bold text-white border border-cinema-border transition-all">
-              Follow Filmmaker
-            </button>
+
+            <FollowButton directorName={film.director} />
           </div>
         </div>
 

@@ -2,9 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { RatingStars } from './RatingStars';
-import { ThumbsUp, Flag, MessageSquare, Send, CheckCircle2, AlertCircle } from 'lucide-react';
-import { getFilmReviews, createReview, submitRating, createReport } from '@/lib/supabase';
+import { ThumbsUp, Flag, MessageSquare, Send, CheckCircle2, AlertCircle, LogIn } from 'lucide-react';
+import { getFilmReviews, createReview, submitRating, createReport, getCurrentSession } from '@/lib/supabase';
 import { Review } from '@/types';
 
 interface ReviewSectionProps {
@@ -19,17 +20,28 @@ export const ReviewSection: React.FC<ReviewSectionProps> = ({ filmId }) => {
   const [submitted, setSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
+  const [userSession, setUserSession] = useState<any>(null);
+
   useEffect(() => {
-    async function loadReviews() {
-      const data = await getFilmReviews(filmId);
+    async function loadData() {
+      const [data, session] = await Promise.all([
+        getFilmReviews(filmId),
+        getCurrentSession()
+      ]);
       setReviews(data);
+      setUserSession(session);
     }
-    loadReviews();
+    loadData();
   }, [filmId]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newReviewText.trim()) return;
+
+    if (!userSession) {
+      setErrorMsg('Please sign in to write a review.');
+      return;
+    }
 
     setLoading(true);
     setErrorMsg(null);
@@ -56,7 +68,7 @@ export const ReviewSection: React.FC<ReviewSectionProps> = ({ filmId }) => {
       setSubmitted(true);
       setTimeout(() => setSubmitted(false), 4000);
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : 'Please sign in to write a review.';
+      const msg = err instanceof Error ? err.message : 'Failed to post review. Please try again.';
       setErrorMsg(msg);
     } finally {
       setLoading(false);

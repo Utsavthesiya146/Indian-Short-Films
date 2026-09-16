@@ -49,6 +49,44 @@ export async function signOutUser() {
   if (error) throw error;
 }
 
+export async function ensureProfileExists(user: { id: string; email?: string; user_metadata?: Record<string, any> }) {
+  if (!user || !user.id) return null;
+  try {
+    const { data: existing } = await supabase
+      .from('profiles')
+      .select('*')
+      .eq('id', user.id)
+      .maybeSingle();
+
+    if (existing) return existing as Profile;
+
+    const emailPrefix = user.email ? user.email.split('@')[0] : 'user';
+    const fullName = user.user_metadata?.full_name || emailPrefix;
+    const username = user.user_metadata?.username || `${emailPrefix}_${Math.random().toString(36).substring(2, 6)}`;
+
+    const { data: newProfile, error } = await supabase
+      .from('profiles')
+      .upsert({
+        id: user.id,
+        email: user.email || '',
+        full_name: fullName,
+        username: username,
+        role: 'user',
+        updated_at: new Date().toISOString()
+      }, { onConflict: 'id' })
+      .select()
+      .maybeSingle();
+
+    if (error) {
+      console.warn('Profile auto-creation warning:', error.message);
+    }
+    return newProfile as Profile | null;
+  } catch (err) {
+    console.warn('ensureProfileExists error:', err);
+    return null;
+  }
+}
+
 export async function getCurrentSession() {
   const { data: { session }, error } = await supabase.auth.getSession();
   if (error) return null;
@@ -59,6 +97,9 @@ export async function getCurrentProfile(): Promise<Profile | null> {
   try {
     const session = await getCurrentSession();
     if (!session?.user) return null;
+
+    const profile = await ensureProfileExists(session.user);
+    if (profile) return profile;
 
     const { data, error } = await supabase
       .from('profiles')
@@ -293,6 +334,7 @@ export async function getUserWatchlist(): Promise<Watchlist[]> {
 export async function toggleWatchlist(filmId: string): Promise<boolean> {
   const session = await getCurrentSession();
   if (!session?.user) throw new Error('Please sign in to manage your watchlist.');
+  await ensureProfileExists(session.user);
 
   const userId = session.user.id;
   const { data: existing } = await supabase
@@ -335,6 +377,7 @@ export async function updateWatchHistory(filmId: string, lastPositionSeconds: nu
   try {
     const session = await getCurrentSession();
     if (!session?.user) return;
+    await ensureProfileExists(session.user);
 
     const completionPercentage = durationSeconds > 0 
       ? Math.min(100, Math.round((lastPositionSeconds / durationSeconds) * 100))
@@ -376,6 +419,7 @@ export async function getUserWatchHistory(): Promise<WatchHistory[]> {
 export async function submitRating(filmId: string, stars: number) {
   const session = await getCurrentSession();
   if (!session?.user) throw new Error('Please sign in to rate films.');
+  await ensureProfileExists(session.user);
 
   const { data, error } = await supabase
     .from('ratings')
@@ -432,6 +476,7 @@ export async function getFilmReviews(filmId: string): Promise<Review[]> {
 export async function createReview({ filmId, content, ratingId }: { filmId: string; content: string; ratingId?: string }) {
   const session = await getCurrentSession();
   if (!session?.user) throw new Error('Please sign in to write a review.');
+  await ensureProfileExists(session.user);
 
   const { data, error } = await supabase
     .from('reviews')
@@ -470,6 +515,7 @@ export async function getFilmComments(filmId: string): Promise<Comment[]> {
 export async function createComment({ filmId, content, parentId }: { filmId: string; content: string; parentId?: string }) {
   const session = await getCurrentSession();
   if (!session?.user) throw new Error('Please sign in to comment.');
+  await ensureProfileExists(session.user);
 
   const { data, error } = await supabase
     .from('comments')
@@ -491,6 +537,7 @@ export async function createComment({ filmId, content, parentId }: { filmId: str
 export async function toggleFilmLike(filmId: string): Promise<boolean> {
   const session = await getCurrentSession();
   if (!session?.user) throw new Error('Please sign in to like films.');
+  await ensureProfileExists(session.user);
 
   const userId = session.user.id;
   const { data: existing } = await supabase
@@ -523,6 +570,52 @@ export async function checkUserLiked(filmId: string): Promise<boolean> {
       .single();
 
     return !!data;
+  } catch {
+    return false;
+  }
+}
+
+// Toggle Follow Filmmaker
+export async function toggleFollowFilmmaker(directorName: string): Promise<boolean> {
+  const session = await getCurrentSession();
+  if (!session?.user) throw new Error('Please sign in to follow filmmakers.');
+  await ensureProfileExists(session.user);
+
+  const storageKey = `followed_filmmakers_${session.user.id}`;
+  let follows: string[] = [];
+  try {
+    const stored = typeof window !== 'undefined' ? localStorage.getItem(storageKey) : null;
+    follows = stored ? JSON.parse(stored) : [];
+  } catch {
+    follows = [];
+  }
+
+  let isFollowing = false;
+  if (follows.includes(directorName)) {
+    follows = follows.filter(name => name !== directorName);
+    isFollowing = false;
+  } else {
+    follows.push(directorName);
+    isFollowing = true;
+  }
+
+  if (typeof window !== 'undefined') {
+    localStorage.setItem(storageKey, JSON.stringify(follows));
+  }
+  return isFollowing;
+}
+
+// Check if user follows filmmaker
+export async function checkUserFollowsFilmmaker(directorName: string): Promise<boolean> {
+  try {
+    const session = await getCurrentSession();
+    if (!session?.user) return false;
+
+    const storageKey = `followed_filmmakers_${session.user.id}`;
+    const stored = typeof window !== 'undefined' ? localStorage.getItem(storageKey) : null;
+    if (!stored) return false;
+    const follows: string[] = JSON.parse(stored);
+    return follows.includes(directorName);
   } catch {
     return false;
   }
