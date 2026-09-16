@@ -77,6 +77,43 @@ export async function getCurrentProfile(): Promise<Profile | null> {
 // 2. FILM QUERIES & DISCOVERY
 // ==========================================
 
+// Helper to resolve media URLs from Supabase storage paths or fallback URLs
+export function resolveMediaUrl(urlOrPath?: string | null, bucket: 'film-videos' | 'film-trailers' | 'film-posters' | 'film-banners' = 'film-videos'): string {
+  if (!urlOrPath || !urlOrPath.trim()) return '';
+
+  const cleanUrl = urlOrPath.trim();
+
+  // Replace legacy 403 Google Cloud sample links with high-availability public MP4 streams
+  if (cleanUrl.includes('commondatastorage.googleapis.com/gtv-videos-bucket/sample/')) {
+    if (cleanUrl.includes('ElephantsDream') || cleanUrl.includes('ForBiggerEscapes')) {
+      return 'https://media.w3.org/2010/05/sintel/trailer.mp4';
+    }
+    if (cleanUrl.includes('TearsOfSteel') || cleanUrl.includes('ForBiggerFun')) {
+      return 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
+    }
+    return 'https://vjs.zencdn.net/v/oceans.mp4';
+  }
+
+  // If already a full HTTP/HTTPS URL, return directly
+  if (cleanUrl.startsWith('http://') || cleanUrl.startsWith('https://')) {
+    return cleanUrl;
+  }
+
+  // Handle relative Supabase storage object path
+  const path = cleanUrl.replace(/^\/+/, '');
+  const { data } = supabase.storage.from(bucket).getPublicUrl(path);
+  return data?.publicUrl || cleanUrl;
+}
+
+export function sanitizeFilm(film: Film): Film {
+  if (!film) return film;
+  return {
+    ...film,
+    video_url: resolveMediaUrl(film.video_url, 'film-videos'),
+    trailer_url: film.trailer_url ? resolveMediaUrl(film.trailer_url, 'film-trailers') : undefined
+  };
+}
+
 // GET Featured Films
 export async function getFeaturedFilms(): Promise<Film[]> {
   try {
@@ -86,11 +123,11 @@ export async function getFeaturedFilms(): Promise<Film[]> {
       .order('display_order', { ascending: true });
 
     if (error || !data || data.length === 0) {
-      return mockFilms.slice(0, 5);
+      return mockFilms.slice(0, 5).map(sanitizeFilm);
     }
-    return data.map((item: { films: unknown }) => item.films as Film).filter(Boolean);
+    return data.map((item: { films: unknown }) => sanitizeFilm(item.films as Film)).filter(Boolean);
   } catch {
-    return mockFilms.slice(0, 5);
+    return mockFilms.slice(0, 5).map(sanitizeFilm);
   }
 }
 
@@ -104,11 +141,11 @@ export async function getTrendingFilms(): Promise<Film[]> {
       .limit(10);
 
     if (error || !data || data.length === 0) {
-      return mockFilms;
+      return mockFilms.map(sanitizeFilm);
     }
-    return data.map((item: { films: unknown }) => item.films as Film).filter(Boolean);
+    return data.map((item: { films: unknown }) => sanitizeFilm(item.films as Film)).filter(Boolean);
   } catch {
-    return mockFilms;
+    return mockFilms.map(sanitizeFilm);
   }
 }
 
@@ -156,11 +193,11 @@ export async function getFilms(filters?: {
           f.director.toLowerCase().includes(searchTerm)
         );
       }
-      return filtered;
+      return filtered.map(sanitizeFilm);
     }
-    return data as Film[];
+    return (data as Film[]).map(sanitizeFilm);
   } catch {
-    return mockFilms;
+    return mockFilms.map(sanitizeFilm);
   }
 }
 
@@ -174,11 +211,13 @@ export async function getFilmBySlug(slug: string): Promise<Film | null> {
       .single();
 
     if (error || !data) {
-      return mockFilms.find(f => f.slug === slug) || null;
+      const mock = mockFilms.find(f => f.slug === slug);
+      return mock ? sanitizeFilm(mock) : null;
     }
-    return data as Film;
+    return sanitizeFilm(data as Film);
   } catch {
-    return mockFilms.find(f => f.slug === slug) || null;
+    const mock = mockFilms.find(f => f.slug === slug);
+    return mock ? sanitizeFilm(mock) : null;
   }
 }
 

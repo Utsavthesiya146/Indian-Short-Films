@@ -111,23 +111,32 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
         ref={videoRef}
         src={videoUrl}
         poster={posterUrl}
+        playsInline
+        preload="metadata"
         className="w-full h-full object-contain cursor-pointer"
         onClick={togglePlay}
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={() => {
           if (videoRef.current) setDuration(videoRef.current.duration);
           setIsLoading(false);
+          setHasError(false);
         }}
         onWaiting={() => setIsLoading(true)}
-        onPlaying={() => setIsLoading(false)}
-        onError={() => {
+        onPlaying={() => {
+          setIsLoading(false);
+          setHasError(false);
+        }}
+        onError={(e) => {
+          if (process.env.NODE_ENV !== 'production') {
+            console.error('Video Player Stream Error:', e, 'Media URL:', videoUrl, 'ErrorCode:', videoRef.current?.error?.code);
+          }
           setIsLoading(false);
           setHasError(true);
         }}
       />
 
       {/* Loading Overlay */}
-      {isLoading && (
+      {isLoading && !hasError && (
         <div className="absolute inset-0 bg-black/60 flex items-center justify-center pointer-events-none">
           <Loader2 className="w-12 h-12 text-cinema-accent animate-spin" />
         </div>
@@ -135,22 +144,35 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
       {/* Error Overlay */}
       {hasError && (
-        <div className="absolute inset-0 bg-cinema-bg/90 flex flex-col items-center justify-center p-6 text-center">
+        <div className="absolute inset-0 bg-cinema-bg/95 flex flex-col items-center justify-center p-6 text-center z-20">
           <AlertTriangle className="w-12 h-12 text-cinema-accent mb-3" />
-          <h3 className="text-lg font-bold text-white mb-1">Playback Error - {title}</h3>
-          <p className="text-xs text-cinema-muted max-w-md mb-4">
-            Failed to stream video. Please check your internet connection or try again later.
+          <h3 className="text-lg font-bold text-white mb-1">Unable to Play Video - {title}</h3>
+          <p className="text-xs text-cinema-muted max-w-md mb-5 leading-relaxed">
+            The video stream could not be loaded. This may occur if the media source is temporarily unavailable or blocked by network settings.
           </p>
-          <button
-            onClick={() => {
-              setHasError(false);
-              setIsLoading(true);
-              videoRef.current?.load();
-            }}
-            className="px-4 py-2 rounded-xl bg-cinema-card hover:bg-cinema-surface border border-cinema-border text-xs font-bold text-white flex items-center gap-2"
-          >
-            <RotateCcw className="w-4 h-4" /> Retry Playback
-          </button>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <button
+              onClick={() => {
+                setHasError(false);
+                setIsLoading(true);
+                if (videoRef.current) {
+                  videoRef.current.load();
+                  videoRef.current.play().catch(() => {});
+                }
+              }}
+              className="px-5 py-2.5 rounded-xl bg-cinema-accent hover:bg-cinema-accentHover text-xs font-bold text-white flex items-center gap-2 shadow-lg shadow-cinema-accent/30 transition-all"
+            >
+              <RotateCcw className="w-4 h-4" /> Retry Playback
+            </button>
+            <a
+              href={videoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2.5 rounded-xl bg-cinema-surface hover:bg-cinema-border border border-cinema-border text-xs font-semibold text-cinema-muted hover:text-white transition-all"
+            >
+              Open Direct Stream
+            </a>
+          </div>
         </div>
       )}
 
