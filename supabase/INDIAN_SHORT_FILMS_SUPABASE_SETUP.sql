@@ -505,21 +505,18 @@ ALTER TABLE public.notifications ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.admin_actions ENABLE ROW LEVEL SECURITY;
 
 -- Profiles Policies
--- PRIVACY FIX: Users can view their own profile or admins/mods can view all. Public non-authenticated queries are restricted from harvesting emails.
 DROP POLICY IF EXISTS "Public profiles are viewable by everyone" ON public.profiles;
 DROP POLICY IF EXISTS "Users view own profile or admins view all" ON public.profiles;
-CREATE POLICY "Users view own profile or admins view all" ON public.profiles 
-    FOR SELECT 
-    USING (
-        auth.uid() = id OR 
-        EXISTS (SELECT 1 FROM public.profiles WHERE id = auth.uid() AND role IN ('admin', 'moderator'))
-    );
+CREATE POLICY "Public profiles are viewable by everyone" ON public.profiles 
+    FOR SELECT USING (true);
+
+DROP POLICY IF EXISTS "Users can insert own profile" ON public.profiles;
+CREATE POLICY "Users can insert own profile" ON public.profiles 
+    FOR INSERT WITH CHECK (auth.uid() = id);
 
 DROP POLICY IF EXISTS "Users can update own profile" ON public.profiles;
 CREATE POLICY "Users can update own profile" ON public.profiles 
-    FOR UPDATE 
-    USING (auth.uid() = id) 
-    WITH CHECK (auth.uid() = id);
+    FOR UPDATE USING (auth.uid() = id) WITH CHECK (auth.uid() = id);
 
 -- Languages & Genres Policies
 DROP POLICY IF EXISTS "Languages public view" ON public.languages;
