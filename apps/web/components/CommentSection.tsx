@@ -41,7 +41,9 @@ export const CommentSection: React.FC<CommentSectionProps> = ({ filmId }) => {
       setComments([newComm, ...comments]);
       setText('');
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : 'Please sign in to post a comment.';
+      const msg = typeof err === 'object' && err !== null && 'message' in err
+        ? String((err as { message: unknown }).message)
+        : err instanceof Error ? err.message : 'Failed to post comment. Please try again.';
       setErrorMsg(msg);
     } finally {
       setLoading(false);

@@ -68,7 +68,9 @@ export const ReviewSection: React.FC<ReviewSectionProps> = ({ filmId }) => {
       setSubmitted(true);
       setTimeout(() => setSubmitted(false), 4000);
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : 'Failed to post review. Please try again.';
+      const msg = typeof err === 'object' && err !== null && 'message' in err
+        ? String((err as { message: unknown }).message)
+        : err instanceof Error ? err.message : 'Failed to post review. Please try again.';
       setErrorMsg(msg);
     } finally {
       setLoading(false);
