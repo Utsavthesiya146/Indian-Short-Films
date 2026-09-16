@@ -1,0 +1,44 @@
+# Environment variables & secrets
+.env
+.env.local
+.env.*.local
+*.env
+
+# Android release signing & credentials
+*.jks
+*.keystore
+key.properties
+
+# Node & Next.js dependencies / build output
+node_modules/
+.next/
+out/
+dist/
+coverage/
+
+# Flutter & Dart generated files
+.dart_tool/
+.pub-cache/
+.pub/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+build/
+apps/mobile/build/
+apps/mobile/.dart_tool/
+
+# IDE & Editor files
+.idea/
+*.iml
+.vscode/
+*.swp
+.gradle/
+*.gradle.bin
+
+# Logs & temporary files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
