@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/models/film_model.dart';
+import '../../film_detail/presentation/film_detail_screen.dart';
 
 class DiscoverScreen extends StatefulWidget {
   const DiscoverScreen({super.key});
@@ -96,37 +97,43 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
               itemCount: films.length,
               itemBuilder: (context, index) {
                 final film = films[index];
-                return Column(
-                  crossAxisAlignment: CrossAlignment.start,
-                  children: [
-                    Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          border: Border.all(color: AppColors.border),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(16),
-                          child: CachedNetworkImage(
-                            imageUrl: film.posterUrl,
-                            fit: BoxFit.cover,
-                            width: double.infinity,
+                return GestureDetector(
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => FilmDetailScreen(film: film)),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            border: Border.all(color: AppColors.border),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(16),
+                            child: CachedNetworkImage(
+                              imageUrl: film.posterUrl,
+                              fit: BoxFit.cover,
+                              width: double.infinity,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 6),
-                    Text(
-                      film.title,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white),
-                    ),
-                    Text(
-                      '${film.languageName} • ${film.ratingAverage} ★',
-                      style: const TextStyle(fontSize: 11, color: AppColors.gold),
-                    ),
-                  ],
+                      const SizedBox(height: 6),
+                      Text(
+                        film.title,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white),
+                      ),
+                      Text(
+                        '${film.languageName} • ${film.ratingAverage} ★',
+                        style: const TextStyle(fontSize: 11, color: AppColors.gold),
+                      ),
+                    ],
+                  ),
                 );
               },
             ),
