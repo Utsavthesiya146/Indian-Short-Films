@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Film } from '@/types';
+import { useVideoModal } from '@/context/VideoModalContext';
 import { Play, Plus, Check, Star, Clock, Globe, Award, Sparkles } from 'lucide-react';
 
 interface HeroBannerProps {
@@ -12,6 +13,7 @@ interface HeroBannerProps {
 
 export const HeroBanner: React.FC<HeroBannerProps> = ({ film }) => {
   const [inWatchlist, setInWatchlist] = useState(false);
+  const { openVideoModal } = useVideoModal();
 
   const durationMin = Math.round(film.duration_seconds / 60);
 
@@ -81,13 +83,13 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({ film }) => {
         {/* Action Buttons */}
         <div className="flex flex-wrap items-center gap-4">
           
-          <Link
-            href={`/film/${film.slug}`}
+          <button
+            onClick={() => openVideoModal(film)}
             className="px-6 py-3.5 rounded-2xl bg-cinema-accent hover:bg-cinema-accentHover text-white font-bold text-sm flex items-center gap-2 shadow-lg shadow-cinema-accent/30 hover:scale-105 transition-all"
           >
             <Play className="w-4 h-4 fill-white" />
             Watch Now
-          </Link>
+          </button>
 
           <button
             onClick={() => setInWatchlist(!inWatchlist)}

@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Film } from '@/types';
+import { useVideoModal } from '@/context/VideoModalContext';
 import { Play, Star, Clock } from 'lucide-react';
 
 interface FilmCardProps {
@@ -13,6 +14,7 @@ interface FilmCardProps {
 
 export const FilmCard: React.FC<FilmCardProps> = ({ film, className = '' }) => {
   const durationMin = Math.round((film.duration_seconds ?? 0) / 60);
+  const { openVideoModal } = useVideoModal();
 
   return (
     <div className={`group relative flex flex-col flex-shrink-0 w-48 sm:w-56 ${className}`}>
@@ -29,12 +31,12 @@ export const FilmCard: React.FC<FilmCardProps> = ({ film, className = '' }) => {
 
         {/* Hover Dark Overlay & Play Icon */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <Link
-            href={`/film/${film.slug}`}
+          <button
+            onClick={() => openVideoModal(film)}
             className="w-12 h-12 rounded-full bg-cinema-accent flex items-center justify-center shadow-xl transform scale-75 group-hover:scale-100 transition-transform duration-300"
           >
             <Play className="w-5 h-5 text-white fill-white ml-0.5" />
-          </Link>
+          </button>
         </div>
 
         {/* Top Badges */}
