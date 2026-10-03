@@ -67,7 +67,7 @@ export const Navbar: React.FC = () => {
               <div className="flex items-center gap-1.5 mt-0.5">
                 <span className="w-3 h-[1px] bg-cinema-accent/60"></span>
                 <span className="text-[8px] font-bold tracking-[0.2em] text-cinema-muted uppercase">
-                  India's Stories on Screen
+                  India&apos;s Stories on Screen
                 </span>
                 <span className="w-3 h-[1px] bg-cinema-accent/60"></span>
               </div>
