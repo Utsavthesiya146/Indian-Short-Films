@@ -16,6 +16,7 @@ const nextConfig = {
         hostname: 'commondatastorage.googleapis.com',
       }
     ],
+  },
 };
 
 module.exports = nextConfig;
