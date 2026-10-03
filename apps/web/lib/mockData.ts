@@ -47,7 +47,9 @@ export const mockFilms: Film[] = [
     likes_count: 1420,
     rating_average: 4.9,
     rating_count: 56,
-    published_at: new Date(Date.now() - 0 * 86400000).toISOString()
+    published_at: ,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
     id: 'film-2',
@@ -71,7 +73,9 @@ export const mockFilms: Film[] = [
     likes_count: 1890,
     rating_average: 4.8,
     rating_count: 105,
-    published_at: new Date(Date.now() - 1 * 86400000).toISOString()
+    published_at: ,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
     id: 'film-3',
@@ -95,7 +99,9 @@ export const mockFilms: Film[] = [
     likes_count: 2310,
     rating_average: 4.7,
     rating_count: 28,
-    published_at: new Date(Date.now() - 2 * 86400000).toISOString()
+    published_at: ,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
     id: 'film-4',
@@ -119,7 +125,9 @@ export const mockFilms: Film[] = [
     likes_count: 980,
     rating_average: 4.6,
     rating_count: 110,
-    published_at: new Date(Date.now() - 3 * 86400000).toISOString()
+    published_at: ,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
     id: 'film-5',
@@ -143,7 +151,9 @@ export const mockFilms: Film[] = [
     likes_count: 1650,
     rating_average: 4.9,
     rating_count: 95,
-    published_at: new Date(Date.now() - 4 * 86400000).toISOString()
+    published_at: ,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
     id: 'film-6',
@@ -167,7 +177,9 @@ export const mockFilms: Film[] = [
     likes_count: 2100,
     rating_average: 4.8,
     rating_count: 117,
-    published_at: new Date(Date.now() - 5 * 86400000).toISOString()
+    published_at: ,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
     id: 'film-7',
@@ -191,7 +203,9 @@ export const mockFilms: Film[] = [
     likes_count: 3420,
     rating_average: 4.8,
     rating_count: 39,
-    published_at: new Date(Date.now() - 6 * 86400000).toISOString()
+    published_at: ,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
     id: 'film-8',
@@ -215,7 +229,9 @@ export const mockFilms: Film[] = [
     likes_count: 1120,
     rating_average: 4.7,
     rating_count: 56,
-    published_at: new Date(Date.now() - 7 * 86400000).toISOString()
+    published_at: ,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
     id: 'film-9',
@@ -239,7 +255,9 @@ export const mockFilms: Film[] = [
     likes_count: 2780,
     rating_average: 4.9,
     rating_count: 86,
-    published_at: new Date(Date.now() - 8 * 86400000).toISOString()
+    published_at: ,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
     id: 'film-10',
@@ -263,7 +281,9 @@ export const mockFilms: Film[] = [
     likes_count: 1450,
     rating_average: 4.8,
     rating_count: 39,
-    published_at: new Date(Date.now() - 9 * 86400000).toISOString()
+    published_at: ,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
     id: 'film-11',
@@ -287,7 +307,9 @@ export const mockFilms: Film[] = [
     likes_count: 1840,
     rating_average: 4.8,
     rating_count: 65,
-    published_at: new Date(Date.now() - 10 * 86400000).toISOString()
+    published_at: ,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
     id: 'film-12',
@@ -311,7 +333,9 @@ export const mockFilms: Film[] = [
     likes_count: 1980,
     rating_average: 4.7,
     rating_count: 119,
-    published_at: new Date(Date.now() - 11 * 86400000).toISOString()
+    published_at: ,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
     id: 'film-13',
@@ -335,7 +359,9 @@ export const mockFilms: Film[] = [
     likes_count: 1220,
     rating_average: 4.6,
     rating_count: 68,
-    published_at: new Date(Date.now() - 12 * 86400000).toISOString()
+    published_at: ,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
     id: 'film-14',
@@ -359,7 +385,9 @@ export const mockFilms: Film[] = [
     likes_count: 2890,
     rating_average: 4.8,
     rating_count: 20,
-    published_at: new Date(Date.now() - 13 * 86400000).toISOString()
+    published_at: ,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
     id: 'film-15',
@@ -383,7 +411,9 @@ export const mockFilms: Film[] = [
     likes_count: 1760,
     rating_average: 4.7,
     rating_count: 110,
-    published_at: new Date(Date.now() - 14 * 86400000).toISOString()
+    published_at: ,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
     id: 'film-16',
@@ -407,7 +437,9 @@ export const mockFilms: Film[] = [
     likes_count: 1540,
     rating_average: 4.8,
     rating_count: 83,
-    published_at: new Date(Date.now() - 15 * 86400000).toISOString()
+    published_at: ,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
     id: 'film-17',
@@ -431,7 +463,9 @@ export const mockFilms: Film[] = [
     likes_count: 2450,
     rating_average: 4.9,
     rating_count: 34,
-    published_at: new Date(Date.now() - 16 * 86400000).toISOString()
+    published_at: ,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
     id: 'film-18',
@@ -455,7 +489,9 @@ export const mockFilms: Film[] = [
     likes_count: 3100,
     rating_average: 4.9,
     rating_count: 22,
-    published_at: new Date(Date.now() - 17 * 86400000).toISOString()
+    published_at: ,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
     id: 'film-19',
@@ -479,7 +515,9 @@ export const mockFilms: Film[] = [
     likes_count: 1890,
     rating_average: 4.7,
     rating_count: 38,
-    published_at: new Date(Date.now() - 18 * 86400000).toISOString()
+    published_at: ,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   },
   {
     id: 'film-20',
@@ -503,7 +541,9 @@ export const mockFilms: Film[] = [
     likes_count: 1670,
     rating_average: 4.8,
     rating_count: 96,
-    published_at: new Date(Date.now() - 19 * 86400000).toISOString()
+    published_at: ,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
   }
 ];
 
