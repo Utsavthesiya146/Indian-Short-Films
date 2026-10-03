@@ -136,7 +136,7 @@ class _FilmDetailScreenState extends State<FilmDetailScreen> {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
-          crossAxisAlignment: CrossAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             
             // Poster / Media Banner Container
@@ -199,7 +199,7 @@ class _FilmDetailScreenState extends State<FilmDetailScreen> {
 
             Text(
               widget.film.title,
-              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.black, color: Colors.white),
+              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w900, color: Colors.white),
             ),
 
             const SizedBox(height: 14),
@@ -271,7 +271,7 @@ class _FilmDetailScreenState extends State<FilmDetailScreen> {
                   const SizedBox(width: 12),
                   Expanded(
                     child: Column(
-                      crossAxisAlignment: CrossAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(widget.film.director, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13)),
                         const Text('Independent Filmmaker', style: TextStyle(color: AppColors.textSecondary, fontSize: 11)),
@@ -285,7 +285,7 @@ class _FilmDetailScreenState extends State<FilmDetailScreen> {
                         SnackBar(content: Text(_isFollowing ? 'Following ${widget.film.director}' : 'Unfollowed')),
                       );
                     },
-                    icon: Icon(_isFollowing ? Icons.person_check_rounded : Icons.person_add_rounded, size: 16),
+                    icon: Icon(_isFollowing ? Icons.check_rounded : Icons.person_add_rounded, size: 16),
                     label: Text(_isFollowing ? 'Following' : 'Follow', style: const TextStyle(fontSize: 12)),
                   ),
                 ],
@@ -303,7 +303,7 @@ class _FilmDetailScreenState extends State<FilmDetailScreen> {
                 border: Border.all(color: AppColors.border),
               ),
               child: Column(
-                crossAxisAlignment: CrossAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
                     'Write a Review & Rate',

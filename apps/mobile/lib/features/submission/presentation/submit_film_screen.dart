@@ -69,7 +69,7 @@ class _SubmitFilmScreenState extends State<SubmitFilmScreen> {
               child: Form(
                 key: _formKey,
                 child: Column(
-                  crossAxisAlignment: CrossAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
                       'Filmmaker Submission Portal',
@@ -121,7 +121,7 @@ class _SubmitFilmScreenState extends State<SubmitFilmScreen> {
 
   Widget _buildTextField(TextEditingController controller, String label, String hint, {int maxLines = 1}) {
     return Column(
-      crossAxisAlignment: CrossAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(label, style: const TextStyle(fontSize: 12, color: AppColors.textSecondary, fontWeight: FontWeight.bold)),
         const SizedBox(height: 4),

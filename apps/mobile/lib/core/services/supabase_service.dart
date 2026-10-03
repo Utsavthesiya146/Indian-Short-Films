@@ -1,5 +1,4 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
-import '../models/film_model.dart';
 
 class SupabaseService {
   final SupabaseClient client = Supabase.instance.client;

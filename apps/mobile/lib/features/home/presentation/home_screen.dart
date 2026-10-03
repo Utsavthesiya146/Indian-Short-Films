@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(
-        crossAxisAlignment: CrossAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           
           // Header Brand
@@ -23,13 +23,13 @@ class HomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
-                crossAxisAlignment: CrossAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
                   Text(
                     'INDIAN SHORT FILMS',
                     style: TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.black,
+                      fontWeight: FontWeight.w900,
                       color: AppColors.textPrimary,
                       letterSpacing: -0.5,
                     ),
@@ -93,7 +93,7 @@ class HomeScreen extends StatelessWidget {
                       left: 20,
                       right: 20,
                       child: Column(
-                        crossAxisAlignment: CrossAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
                             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
@@ -179,7 +179,7 @@ class HomeScreen extends StatelessWidget {
                     MaterialPageRoute(builder: (_) => FilmDetailScreen(film: film)),
                   ),
                   child: Column(
-                    crossAxisAlignment: CrossAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
                         width: 130,

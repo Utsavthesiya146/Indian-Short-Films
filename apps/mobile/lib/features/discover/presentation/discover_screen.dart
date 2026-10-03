@@ -24,7 +24,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
-        crossAxisAlignment: CrossAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
             'Discover Short Films',
@@ -103,7 +103,7 @@ class _DiscoverScreenState extends State<DiscoverScreen> {
                     MaterialPageRoute(builder: (_) => FilmDetailScreen(film: film)),
                   ),
                   child: Column(
-                    crossAxisAlignment: CrossAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Expanded(
                         child: Container(

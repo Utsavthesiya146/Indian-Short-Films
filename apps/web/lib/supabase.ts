@@ -746,25 +746,25 @@ export async function getAdminStats(): Promise<DashboardStats> {
     ]);
 
     return {
-      totalUsers: usersCount ?? 1420,
-      totalFilms: filmsCount ?? 28,
-      publishedFilms: publishedCount ?? 24,
-      pendingSubmissions: pendingCount ?? 4,
-      totalViews: 45890,
-      totalReviews: reviewsCount ?? 312,
-      totalFilmmakers: 18,
-      totalReports: reportsCount ?? 2
+      totalUsers: usersCount ?? 0,
+      totalFilms: filmsCount ?? 0,
+      publishedFilms: publishedCount ?? 0,
+      pendingSubmissions: pendingCount ?? 0,
+      totalViews: 0,
+      totalReviews: reviewsCount ?? 0,
+      totalFilmmakers: 0,
+      totalReports: reportsCount ?? 0
     };
   } catch {
     return {
-      totalUsers: 1420,
-      totalFilms: 28,
-      publishedFilms: 24,
-      pendingSubmissions: 4,
-      totalViews: 45890,
-      totalReviews: 312,
-      totalFilmmakers: 18,
-      totalReports: 2
+      totalUsers: 0,
+      totalFilms: 0,
+      publishedFilms: 0,
+      pendingSubmissions: 0,
+      totalViews: 0,
+      totalReviews: 0,
+      totalFilmmakers: 0,
+      totalReports: 0
     };
   }
 }
