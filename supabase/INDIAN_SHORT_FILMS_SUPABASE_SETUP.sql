@@ -829,11 +829,11 @@ INSERT INTO public.films (
     'A passionate classical violinist in the mist-laden hills of Chikmagalur struggles to compose his farewell masterpiece while losing his hearing.',
     'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=800&q=80',
     'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1920&q=80',
-    'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
     '',
-    1080, 2024, 'U', 'Aarav Sharma', 'Independent',
+    1080, 2024, 'U', 'Aarav Sharma', '',
     '[]'::jsonb,
-    'Independent', 'approved', 'public', 42300, 1420, 4.9, 142, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f11', NOW() - INTERVAL '0 days'
+    '', 'approved', 'public', 42300, 1420, 4.9, 50, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f11', NOW() - INTERVAL '0 days'
 ),
 (
     'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c12',
@@ -842,11 +842,11 @@ INSERT INTO public.films (
     'A folklore researcher visits a sacred grove in Shivamogga and encounters the enigmatic guardian deity of the Western Ghats.',
     'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?auto=format&fit=crop&w=800&q=80',
     'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1920&q=80',
-    'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
     '',
-    1320, 2024, 'U', 'Priya Hegde', 'Independent',
+    1320, 2024, 'U', 'Priya Hegde', '',
     '[]'::jsonb,
-    'Independent', 'approved', 'public', 56100, 1890, 4.8, 189, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f12', NOW() - INTERVAL '1 days'
+    '', 'approved', 'public', 56100, 1890, 4.8, 50, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f12', NOW() - INTERVAL '1 days'
 ),
 (
     'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c13',
@@ -855,11 +855,11 @@ INSERT INTO public.films (
     'An antique clockmaker in Varanasi uncovers a rhythmic time-loop apparatus that rewinds the holy city by seven minutes every sunset.',
     'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=800&q=80',
     'https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?auto=format&fit=crop&w=1920&q=80',
-    'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
     '',
-    900, 2024, 'U', 'Vikramaditya Roy', 'Independent',
+    900, 2024, 'U', 'Vikramaditya Roy', '',
     '[]'::jsonb,
-    'Independent', 'approved', 'public', 78900, 2310, 4.7, 231, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f13', NOW() - INTERVAL '2 days'
+    '', 'approved', 'public', 78900, 2310, 4.7, 50, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f13', NOW() - INTERVAL '2 days'
 ),
 (
     'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c14',
@@ -868,11 +868,11 @@ INSERT INTO public.films (
     'Two strangers meet at an iconic filter coffee darshini in Basavanagudi as the sunrise mist covers the city streets.',
     'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&w=800&q=80',
     'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1920&q=80',
-    'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4',
     '',
-    720, 2024, 'U', 'Karthik Rao', 'Independent',
+    720, 2024, 'U', 'Karthik Rao', '',
     '[]'::jsonb,
-    'Independent', 'approved', 'public', 31200, 980, 4.6, 98, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f14', NOW() - INTERVAL '3 days'
+    '', 'approved', 'public', 31200, 980, 4.6, 50, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f14', NOW() - INTERVAL '3 days'
 ),
 (
     'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c15',
@@ -881,11 +881,11 @@ INSERT INTO public.films (
     'An evocative documentary exploring the ancient ritual songs of the Theyyam performers through nocturnal backwaters.',
     'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=800&q=80',
     'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?auto=format&fit=crop&w=1920&q=80',
-    'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
     '',
-    1440, 2024, 'U', 'Meera Nambiar', 'Independent',
+    1440, 2024, 'U', 'Meera Nambiar', '',
     '[]'::jsonb,
-    'Independent', 'approved', 'public', 48900, 1650, 4.9, 165, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f15', NOW() - INTERVAL '4 days'
+    '', 'approved', 'public', 48900, 1650, 4.9, 50, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f15', NOW() - INTERVAL '4 days'
 ),
 (
     'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c16',
@@ -894,11 +894,11 @@ INSERT INTO public.films (
     'A tribute to classical Kannada theatre exploring a playwright facing the empty stage before a historic premiere.',
     'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80',
     'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1920&q=80',
-    'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
     '',
-    1560, 2024, 'U', 'Suhas Kulkarni', 'Independent',
+    1560, 2024, 'U', 'Suhas Kulkarni', '',
     '[]'::jsonb,
-    'Independent', 'approved', 'public', 65400, 2100, 4.8, 210, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f11', NOW() - INTERVAL '5 days'
+    '', 'approved', 'public', 65400, 2100, 4.8, 50, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f11', NOW() - INTERVAL '5 days'
 ),
 (
     'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c17',
@@ -907,11 +907,11 @@ INSERT INTO public.films (
     'A deaf painter and an acoustic recordist capture the changing sounds of Chennai shores before the monsoons arrive.',
     'https://images.unsplash.com/photo-1509281373149-e957c6296406?auto=format&fit=crop&w=800&q=80',
     'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?auto=format&fit=crop&w=1920&q=80',
-    'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
     '',
-    960, 2024, 'U', 'Arvind Swamy', 'Independent',
+    960, 2024, 'U', 'Arvind Swamy', '',
     '[]'::jsonb,
-    'Independent', 'approved', 'public', 89300, 3420, 4.8, 342, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f12', NOW() - INTERVAL '6 days'
+    '', 'approved', 'public', 89300, 3420, 4.8, 50, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f12', NOW() - INTERVAL '6 days'
 ),
 (
     'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c18',
@@ -920,11 +920,11 @@ INSERT INTO public.films (
     'The meditative rhythm of salt plains and terracotta wheels in the arid beauty of Gujarat white desert.',
     'https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80',
     'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1920&q=80',
-    'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
     '',
-    1140, 2024, 'U', 'Bhavna Patel', 'Independent',
+    1140, 2024, 'U', 'Bhavna Patel', '',
     '[]'::jsonb,
-    'Independent', 'approved', 'public', 38400, 1120, 4.7, 112, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f13', NOW() - INTERVAL '7 days'
+    '', 'approved', 'public', 38400, 1120, 4.7, 50, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f13', NOW() - INTERVAL '7 days'
 ),
 (
     'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c19',
@@ -933,11 +933,11 @@ INSERT INTO public.films (
     'A single train compartment, six unacquainted passengers, and an unaddressed telegram that changes everything.',
     'https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?auto=format&fit=crop&w=800&q=80',
     'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1920&q=80',
-    'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4',
     '',
-    840, 2024, 'U', 'Aarav Sharma', 'Independent',
+    840, 2024, 'U', 'Aarav Sharma', '',
     '[]'::jsonb,
-    'Independent', 'approved', 'public', 71200, 2780, 4.9, 278, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f14', NOW() - INTERVAL '8 days'
+    '', 'approved', 'public', 71200, 2780, 4.9, 50, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f14', NOW() - INTERVAL '8 days'
 ),
 (
     'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c20',
@@ -946,11 +946,11 @@ INSERT INTO public.films (
     'Over steaming clay cups of ginger tea, an artisan and an aspiring animator connect across generational gaps.',
     'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=800&q=80',
     'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&w=1920&q=80',
-    'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
     '',
-    660, 2024, 'U', 'Ananya Sen', 'Independent',
+    660, 2024, 'U', 'Ananya Sen', '',
     '[]'::jsonb,
-    'Independent', 'approved', 'public', 29800, 1450, 4.8, 145, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f15', NOW() - INTERVAL '9 days'
+    '', 'approved', 'public', 29800, 1450, 4.8, 50, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f15', NOW() - INTERVAL '9 days'
 ),
 (
     'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c21',
@@ -959,11 +959,11 @@ INSERT INTO public.films (
     'A tribute to Karnataka sacred river valley through the eyes of its village elders.',
     'https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80',
     'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=1920&q=80',
-    'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
     '',
-    1080, 2024, 'U', 'Chetan Gowda', 'Independent',
+    1080, 2024, 'U', 'Chetan Gowda', '',
     '[]'::jsonb,
-    'Independent', 'approved', 'public', 45600, 1840, 4.8, 184, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f11', NOW() - INTERVAL '10 days'
+    '', 'approved', 'public', 45600, 1840, 4.8, 50, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f11', NOW() - INTERVAL '10 days'
 ),
 (
     'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c22',
@@ -972,11 +972,11 @@ INSERT INTO public.films (
     'A mist-veiled morning on the Hooghly river where an old ferryman reveals a decades-old town mystery.',
     'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?auto=format&fit=crop&w=800&q=80',
     'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1920&q=80',
-    'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
     '',
-    1020, 2024, 'U', 'Sourav Mukherjee', 'Independent',
+    1020, 2024, 'U', 'Sourav Mukherjee', '',
     '[]'::jsonb,
-    'Independent', 'approved', 'public', 52100, 1980, 4.7, 198, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f12', NOW() - INTERVAL '11 days'
+    '', 'approved', 'public', 52100, 1980, 4.7, 50, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f12', NOW() - INTERVAL '11 days'
 ),
 (
     'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c23',
@@ -985,11 +985,11 @@ INSERT INTO public.films (
     'A traditional Benarasi silk weaver weaves his ancestral pattern for one final customer.',
     'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=800&q=80',
     'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1920&q=80',
-    'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
     '',
-    900, 2024, 'U', 'Manoj Verma', 'Independent',
+    900, 2024, 'U', 'Manoj Verma', '',
     '[]'::jsonb,
-    'Independent', 'approved', 'public', 34100, 1220, 4.6, 122, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f13', NOW() - INTERVAL '12 days'
+    '', 'approved', 'public', 34100, 1220, 4.6, 50, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f13', NOW() - INTERVAL '12 days'
 ),
 (
     'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c24',
@@ -998,11 +998,11 @@ INSERT INTO public.films (
     'A celebration of Godavari delta folk musicians seeking to preserve river ballad poetry.',
     'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=800&q=80',
     'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?auto=format&fit=crop&w=1920&q=80',
-    'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
     '',
-    1260, 2024, 'U', 'Venkatesh Rao', 'Independent',
+    1260, 2024, 'U', 'Venkatesh Rao', '',
     '[]'::jsonb,
-    'Independent', 'approved', 'public', 84200, 2890, 4.8, 289, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f14', NOW() - INTERVAL '13 days'
+    '', 'approved', 'public', 84200, 2890, 4.8, 50, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f14', NOW() - INTERVAL '13 days'
 ),
 (
     'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c25',
@@ -1011,11 +1011,11 @@ INSERT INTO public.films (
     'Trekkers traversing the historic forts of Shivaji Maharaj uncover an undisturbed cavern archive.',
     'https://images.unsplash.com/photo-1509281373149-e957c6296406?auto=format&fit=crop&w=800&q=80',
     'https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?auto=format&fit=crop&w=1920&q=80',
-    'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4',
     '',
-    1200, 2024, 'U', 'Tanvi Joshi', 'Independent',
+    1200, 2024, 'U', 'Tanvi Joshi', '',
     '[]'::jsonb,
-    'Independent', 'approved', 'public', 46200, 1760, 4.7, 176, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f15', NOW() - INTERVAL '14 days'
+    '', 'approved', 'public', 46200, 1760, 4.7, 50, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f15', NOW() - INTERVAL '14 days'
 ),
 (
     'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c26',
@@ -1024,11 +1024,11 @@ INSERT INTO public.films (
     'A heartwarming journey of a veteran postman delivering handwritten letters across heritage South Bangalore.',
     'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&w=800&q=80',
     'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1920&q=80',
-    'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
     '',
-    780, 2024, 'U', 'Karthik Rao', 'Independent',
+    780, 2024, 'U', 'Karthik Rao', '',
     '[]'::jsonb,
-    'Independent', 'approved', 'public', 39800, 1540, 4.8, 154, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f11', NOW() - INTERVAL '15 days'
+    '', 'approved', 'public', 39800, 1540, 4.8, 50, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f11', NOW() - INTERVAL '15 days'
 ),
 (
     'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c27',
@@ -1037,11 +1037,11 @@ INSERT INTO public.films (
     'Chinese fishing nets, sudden monsoon showers, and two travelers stranded under an antique colonial portico.',
     'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?auto=format&fit=crop&w=800&q=80',
     'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=1920&q=80',
-    'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
     '',
-    840, 2024, 'U', 'Meera Nambiar', 'Independent',
+    840, 2024, 'U', 'Meera Nambiar', '',
     '[]'::jsonb,
-    'Independent', 'approved', 'public', 68100, 2450, 4.9, 245, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f12', NOW() - INTERVAL '16 days'
+    '', 'approved', 'public', 68100, 2450, 4.9, 50, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f12', NOW() - INTERVAL '16 days'
 ),
 (
     'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c28',
@@ -1050,11 +1050,11 @@ INSERT INTO public.films (
     'Intimate visual poetry revealing the six hours of sacred facial makeup transformation of a master Kathakali artist.',
     'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=800&q=80',
     'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1920&q=80',
-    'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
     '',
-    1500, 2024, 'U', 'Suresh Menon', 'Independent',
+    1500, 2024, 'U', 'Suresh Menon', '',
     '[]'::jsonb,
-    'Independent', 'approved', 'public', 92400, 3100, 4.9, 310, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f13', NOW() - INTERVAL '17 days'
+    '', 'approved', 'public', 92400, 3100, 4.9, 50, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f13', NOW() - INTERVAL '17 days'
 ),
 (
     'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c29',
@@ -1063,11 +1063,11 @@ INSERT INTO public.films (
     'A hilarious yet poignant negotiation between three cousins inside an old Irani Chai cafe in Charminar.',
     'https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=800&q=80',
     'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?auto=format&fit=crop&w=1920&q=80',
-    'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
     '',
-    960, 2024, 'U', 'Faizan Ahmed', 'Independent',
+    960, 2024, 'U', 'Faizan Ahmed', '',
     '[]'::jsonb,
-    'Independent', 'approved', 'public', 47200, 1890, 4.7, 189, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f14', NOW() - INTERVAL '18 days'
+    '', 'approved', 'public', 47200, 1890, 4.7, 50, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f14', NOW() - INTERVAL '18 days'
 ),
 (
     'c0eebc99-9c0b-4ef8-bb6d-6bb9bd380c30',
@@ -1076,11 +1076,11 @@ INSERT INTO public.films (
     'The winding Pols of heritage Ahmedabad, carved wooden Havelis, and an untold story from the 1960s.',
     'https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80',
     'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1920&q=80',
-    'https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4',
     '',
-    1080, 2024, 'U', 'Bhavna Patel', 'Independent',
+    1080, 2024, 'U', 'Bhavna Patel', '',
     '[]'::jsonb,
-    'Independent', 'approved', 'public', 41900, 1670, 4.8, 167, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f15', NOW() - INTERVAL '19 days'
+    '', 'approved', 'public', 41900, 1670, 4.8, 50, 'f0eebc99-9c0b-4ef8-bb6d-6bb9bd380f15', NOW() - INTERVAL '19 days'
 )
 ON CONFLICT (slug) DO NOTHING;
 

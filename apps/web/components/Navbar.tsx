@@ -38,17 +38,38 @@ export const Navbar: React.FC = () => {
           
           {/* Brand Logo & Tagline */}
           <div className="flex items-center gap-8">
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 rounded-xl bg-cinema-accent flex items-center justify-center shadow-lg shadow-cinema-accent/30 group-hover:scale-105 transition-transform">
-                <Film className="w-6 h-6 text-white" />
+            <Link href="/" className="flex flex-col items-start gap-0.5 group">
+              <div className="flex items-center gap-1">
+                <span className="font-sans font-black text-xl text-white tracking-tight relative">
+                  i<span className="relative inline-block">n<span className="absolute -top-0.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#f84464]"></span></span>d<span className="relative inline-block">i<span className="absolute -top-0.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#f84464]"></span></span>an
+                </span>
+                <div className="-rotate-2 inline-block mx-1">
+                  <svg viewBox="0 0 94 36" className="h-6 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="ticketGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#f84464" />
+                        <stop offset="60%" stopColor="#dc2626" />
+                        <stop offset="100%" stopColor="#8b5cf6" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M 6 0 L 39 0 A 6 6 0 0 1 55 0 L 88 0 C 91.3 0 94 2.7 94 6 L 94 30 C 94 33.3 89.3 36 88 36 L 55 36 A 6 6 0 0 1 39 36 L 6 36 C 2.7 36 0 33.3 0 30 L 0 6 C 0 2.7 2.7 0 6 0 Z" fill="url(#ticketGradient)" />
+                    <text x="11" y="24" fill="#ffffff" className="font-sans font-black text-[16.5px] tracking-[-0.6px]">short</text>
+                    <g transform="translate(64, 10)">
+                      <circle cx="8" cy="8" r="7.5" fill="#ffffff" />
+                      <polygon points="6.5,5 11.5,8 6.5,11" fill="#dc2626" />
+                    </g>
+                  </svg>
+                </div>
+                <span className="font-sans font-black text-xl text-white tracking-tight relative">
+                  mov<span className="relative inline-block">i<span className="absolute -top-0.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#f84464]"></span></span>e
+                </span>
               </div>
-              <div className="flex flex-col">
-                <span className="font-display font-extrabold text-xl tracking-tight text-white group-hover:text-cinema-accent transition-colors">
-                  INDIAN SHORT FILMS
+              <div className="flex items-center gap-1.5 mt-0.5">
+                <span className="w-3 h-[1px] bg-cinema-accent/60"></span>
+                <span className="text-[8px] font-bold tracking-[0.2em] text-cinema-muted uppercase">
+                  India's Stories on Screen
                 </span>
-                <span className="text-[10px] text-cinema-muted font-medium tracking-wider uppercase">
-                  Discover India. Watch Stories.
-                </span>
+                <span className="w-3 h-[1px] bg-cinema-accent/60"></span>
               </div>
             </Link>
 

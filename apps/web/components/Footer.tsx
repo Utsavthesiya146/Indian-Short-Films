@@ -13,10 +13,9 @@ export const Footer: React.FC = () => {
           {/* Brand Info */}
           <div className="md:col-span-1 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-cinema-accent flex items-center justify-center">
-                <Film className="w-5 h-5 text-white" />
-              </div>
-              <span className="font-display font-bold text-lg text-white">INDIAN SHORT FILMS</span>
+              <span className="font-sans font-black text-lg text-white tracking-tight">
+                INDIAN SHORT MOVIE
+              </span>
             </div>
             <p className="text-xs text-cinema-muted leading-relaxed">
               Dedicated platform celebrating independent storytelling, short cinema, and visionary filmmakers across all Indian languages.
@@ -58,9 +57,9 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="border-t border-cinema-border/50 pt-6 flex flex-col md:flex-row items-center justify-between text-xs text-cinema-muted gap-4">
-          <p>© {new Date().getFullYear()} Indian Short Films. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Indian Short Movie. All rights reserved.</p>
           <p className="flex items-center gap-1">
-            Crafted with <Heart className="w-3.5 h-3.5 text-cinema-accent fill-cinema-accent" /> for Indian Independent Cinema
+            With love ❤️ <a href="https://webhostingbaba.com" target="_blank" rel="noopener noreferrer" className="text-red-500 font-bold hover:underline">HOSTING BABA</a>
           </p>
         </div>
       </div>
