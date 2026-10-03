@@ -126,7 +126,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
           </h3>
           
           <p className="text-xs sm:text-sm text-gray-400 max-w-sm sm:max-w-md leading-relaxed mb-6 sm:mb-8 px-4">
-            The official digital screening for <span className="text-white font-bold">"{title}"</span> is currently being scheduled. Join the waitlist to be notified first.
+            The official digital screening for <span className="text-white font-bold">&quot;{title}&quot;</span> is currently being scheduled. Join the waitlist to be notified first.
           </p>
 
           <button 
