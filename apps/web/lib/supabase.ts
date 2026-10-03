@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { Film, Genre, Language, DashboardStats, Profile, Submission, Review, Comment, Watchlist, WatchHistory } from '@/types';
-import { mockFilms, mockGenres, mockLanguages, mockSubmissions } from './mockData';
+
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://qmqtnrdwxubfrrtlkbfi.supabase.co';
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'sb_publishable_fS36qWLmk7LNwrtN6boJHw_77BVSCrj';
@@ -124,15 +124,9 @@ export function resolveMediaUrl(urlOrPath?: string | null, bucket: 'film-videos'
 
   const cleanUrl = urlOrPath.trim();
 
-  // Replace legacy 403 Google Cloud sample links with high-availability public MP4 streams
+  // Remove dummy video placeholders so the player shows "Video Not Available"
   if (cleanUrl.includes('commondatastorage.googleapis.com/gtv-videos-bucket/sample/')) {
-    if (cleanUrl.includes('ElephantsDream') || cleanUrl.includes('ForBiggerEscapes')) {
-      return 'https://media.w3.org/2010/05/sintel/trailer.mp4';
-    }
-    if (cleanUrl.includes('TearsOfSteel') || cleanUrl.includes('ForBiggerFun')) {
-      return 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
-    }
-    return 'https://vjs.zencdn.net/v/oceans.mp4';
+    return '';
   }
 
   // If already a full HTTP/HTTPS URL, return directly
@@ -164,11 +158,11 @@ export async function getFeaturedFilms(): Promise<Film[]> {
       .order('display_order', { ascending: true });
 
     if (error || !data || data.length === 0) {
-      return mockFilms.slice(0, 5).map(sanitizeFilm);
+      return [];
     }
     return data.map((item: { films: unknown }) => sanitizeFilm(item.films as Film)).filter(Boolean);
   } catch {
-    return mockFilms.slice(0, 5).map(sanitizeFilm);
+    return [];
   }
 }
 
@@ -182,11 +176,11 @@ export async function getTrendingFilms(): Promise<Film[]> {
       .limit(10);
 
     if (error || !data || data.length === 0) {
-      return mockFilms.map(sanitizeFilm);
+      return [];
     }
     return data.map((item: { films: unknown }) => sanitizeFilm(item.films as Film)).filter(Boolean);
   } catch {
-    return mockFilms.map(sanitizeFilm);
+    return [];
   }
 }
 
@@ -226,19 +220,11 @@ export async function getFilms(filters?: {
 
     const { data, error } = await query;
     if (error || !data || data.length === 0) {
-      let filtered = [...mockFilms];
-      if (filters?.search) {
-        const searchTerm = filters.search.toLowerCase();
-        filtered = filtered.filter(f =>
-          f.title.toLowerCase().includes(searchTerm) ||
-          f.director.toLowerCase().includes(searchTerm)
-        );
-      }
-      return filtered.map(sanitizeFilm);
+      return [];
     }
     return (data as Film[]).map(sanitizeFilm);
   } catch {
-    return mockFilms.map(sanitizeFilm);
+    return [];
   }
 }
 
@@ -252,13 +238,11 @@ export async function getFilmBySlug(slug: string): Promise<Film | null> {
       .single();
 
     if (error || !data) {
-      const mock = mockFilms.find(f => f.slug === slug);
-      return mock ? sanitizeFilm(mock) : null;
+      return null;
     }
     return sanitizeFilm(data as Film);
   } catch {
-    const mock = mockFilms.find(f => f.slug === slug);
-    return mock ? sanitizeFilm(mock) : null;
+    return null;
   }
 }
 
@@ -266,10 +250,10 @@ export async function getFilmBySlug(slug: string): Promise<Film | null> {
 export async function getLanguages(): Promise<Language[]> {
   try {
     const { data, error } = await supabase.from('languages').select('*').order('name', { ascending: true });
-    if (error || !data || data.length === 0) return mockLanguages;
+    if (error || !data || data.length === 0) return [];
     return data as Language[];
   } catch {
-    return mockLanguages;
+    return [];
   }
 }
 
@@ -277,10 +261,10 @@ export async function getLanguages(): Promise<Language[]> {
 export async function getGenres(): Promise<Genre[]> {
   try {
     const { data, error } = await supabase.from('genres').select('*').order('name', { ascending: true });
-    if (error || !data || data.length === 0) return mockGenres;
+    if (error || !data || data.length === 0) return [];
     return data as Genre[];
   } catch {
-    return mockGenres;
+    return [];
   }
 }
 
@@ -716,10 +700,10 @@ export async function getUserSubmissions(): Promise<Submission[]> {
       .eq('filmmaker_id', fmRecord.id)
       .order('created_at', { ascending: false });
 
-    if (error || !data) return mockSubmissions;
+    if (error || !data) return [];
     return data as Submission[];
   } catch {
-    return mockSubmissions;
+    return [];
   }
 }
 
@@ -777,10 +761,10 @@ export async function getAllSubmissions(): Promise<Submission[]> {
       .select('*, filmmakers(*)')
       .order('created_at', { ascending: false });
 
-    if (error || !data) return mockSubmissions;
+    if (error || !data) return [];
     return data as Submission[];
   } catch {
-    return mockSubmissions;
+    return [];
   }
 }
 

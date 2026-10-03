@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
-import { mockFilms } from '@/lib/mockData';
+import { getFilms } from '@/lib/supabase';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://indianshortfilms.com';
 
   const staticRoutes = [
@@ -19,7 +19,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route === '' ? 1.0 : 0.8,
   }));
 
-  const filmRoutes = mockFilms.map((film) => ({
+  const films = await getFilms();
+  const filmRoutes = films.map((film) => ({
     url: `${baseUrl}/film/${film.slug}`,
     lastModified: new Date(film.updated_at || Date.now()),
     changeFrequency: 'weekly' as const,

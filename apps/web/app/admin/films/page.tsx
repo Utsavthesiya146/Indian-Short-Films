@@ -2,12 +2,16 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { mockFilms } from '@/lib/mockData';
+import { getFilms } from '@/lib/supabase';
 import { Film } from '@/types';
 import { Star, Flame, Sparkles, Check, Trash2, Eye, Edit3, ShieldAlert } from 'lucide-react';
 
 export default function AdminFilmsPage() {
-  const [films, setFilms] = useState<Film[]>(mockFilms);
+  const [films, setFilms] = useState<Film[]>([]);
+
+  React.useEffect(() => {
+    getFilms().then(setFilms);
+  }, []);
 
   const toggleFeatured = (id: string) => {
     alert('Toggled Featured status for film ' + id);
