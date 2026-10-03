@@ -27,7 +27,7 @@ export const VideoModalProvider = ({ children }: { children: ReactNode }) => {
           onClick={closeVideoModal}
         >
           <div 
-            className="bg-[#111319] border border-cinema-border rounded-3xl max-w-4xl w-full overflow-hidden relative shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7)]"
+            className="bg-cinema-surface border border-cinema-border rounded-3xl max-w-4xl w-full overflow-hidden relative shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7)]"
             onClick={(e) => e.stopPropagation()}
           >
             <button 
@@ -37,26 +37,14 @@ export const VideoModalProvider = ({ children }: { children: ReactNode }) => {
               <X className="w-5 h-5" />
             </button>
             
-            <div className="relative aspect-video bg-black w-full flex items-center justify-center">
-              {activeFilm.video_url ? (
-                <video 
-                  controls 
-                  src={activeFilm.video_url} 
-                  poster={activeFilm.banner_url || activeFilm.poster_url}
-                  className="w-full h-full object-contain"
-                  autoPlay
-                />
-              ) : (
-                <div className="flex flex-col items-center text-center p-6">
-                  <div className="w-16 h-16 rounded-xl bg-cinema-card border border-cinema-border/50 flex items-center justify-center mb-4">
-                    <span className="text-cinema-accent text-3xl font-bold">!</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Video Not Available</h3>
-                  <p className="text-sm text-cinema-muted">
-                    The official video source for {activeFilm.title} is currently unavailable.
-                  </p>
-                </div>
-              )}
+            <div className="relative aspect-video bg-black w-full">
+              <video 
+                controls 
+                src={activeFilm.video_url} 
+                poster={activeFilm.banner_url || activeFilm.poster_url}
+                className="w-full h-full object-contain"
+                autoPlay
+              />
             </div>
             
             <div className="p-6">
