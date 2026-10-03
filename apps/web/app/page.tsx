@@ -17,11 +17,11 @@ export default async function HomePage() {
   const heroFilm = featured[0] || films[0];
   const topRatedFilms = [...films].sort((a, b) => b.rating_average - a.rating_average);
 
-  return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-      
+    <>
       {/* Hero Section */}
       {heroFilm && <HeroBanner film={heroFilm} />}
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
       {/* Section 1: Trending Now */}
       <FilmRow
@@ -112,5 +112,6 @@ export default async function HomePage() {
       </section>
 
     </div>
+    </>
   );
 }

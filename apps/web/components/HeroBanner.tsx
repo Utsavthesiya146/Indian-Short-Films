@@ -18,7 +18,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({ film }) => {
   const durationMin = Math.round(film.duration_seconds / 60);
 
   return (
-    <div className="relative w-full h-[70vh] min-h-[500px] max-h-[700px] rounded-3xl overflow-hidden mb-12 border border-cinema-border shadow-2xl">
+    <div className="relative w-full h-[85vh] min-h-[600px] max-h-[900px] overflow-hidden bg-black">
       
       {/* Backdrop Image with Dark Gradients */}
       <div className="absolute inset-0">
@@ -27,14 +27,16 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({ film }) => {
           alt={film.title}
           fill
           priority
-          className="object-cover object-center scale-105 transform filter brightness-75 transition-all duration-700 hover:scale-100"
+          className="object-cover object-center scale-105 transform transition-all duration-[10000ms] ease-out hover:scale-100"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-cinema-bg via-cinema-bg/70 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-cinema-bg via-cinema-bg/80 to-transparent w-full md:w-3/4" />
+        {/* Right side gradient for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent w-full md:w-[60%]" />
+        {/* Bottom gradient to blend into the next section */}
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#0a0a0a] to-transparent" />
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 h-full max-w-7xl mx-auto px-6 sm:px-10 flex flex-col justify-end pb-12">
+      <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-end pb-20">
         
         {/* Spotlight Tag */}
         <div className="flex items-center gap-2 text-cinema-gold bg-cinema-gold/10 border border-cinema-gold/30 px-3 py-1 rounded-full w-fit text-xs font-semibold mb-4 backdrop-blur-md">
