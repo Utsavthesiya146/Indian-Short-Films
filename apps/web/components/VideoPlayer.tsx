@@ -98,6 +98,18 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   };
 
+  if (!videoUrl) {
+    return (
+      <div className="relative w-full aspect-video rounded-3xl overflow-hidden bg-black border border-cinema-border shadow-2xl flex flex-col items-center justify-center p-6 text-center">
+        <AlertTriangle className="w-12 h-12 text-cinema-muted mb-3" />
+        <h3 className="text-lg font-bold text-white mb-1">Video Not Available</h3>
+        <p className="text-xs text-cinema-muted max-w-md leading-relaxed">
+          The official video source for {title} is currently unavailable.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div
       ref={containerRef}

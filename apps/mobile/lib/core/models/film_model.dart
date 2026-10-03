@@ -68,7 +68,7 @@ class FilmModel {
           bannerUrl:
               'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80',
           videoUrl:
-              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+              '',
           durationSeconds: 720,
           releaseYear: 2024,
           certificate: 'U',
@@ -90,7 +90,7 @@ class FilmModel {
           bannerUrl:
               'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80',
           videoUrl:
-              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+              '',
           durationSeconds: 950,
           releaseYear: 2024,
           certificate: 'U',
@@ -112,7 +112,7 @@ class FilmModel {
           bannerUrl:
               'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80',
           videoUrl:
-              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4',
+              '',
           durationSeconds: 840,
           releaseYear: 2023,
           certificate: 'UA 13+',

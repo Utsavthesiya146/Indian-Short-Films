@@ -20,7 +20,7 @@ export const FilmCard: React.FC<FilmCardProps> = ({ film, className = '' }) => {
       {/* Poster Image Container */}
       <div className="relative aspect-[2/3] w-full rounded-2xl overflow-hidden bg-cinema-card border border-cinema-border poster-glow transition-all duration-300 group-hover:-translate-y-1.5 group-hover:border-cinema-accent/60 shadow-lg">
         <Image
-          src={film.poster_url || 'https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&w=600&q=80'}
+          src={film.poster_url || 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'}
           alt={film.title ?? 'Short Film'}
           fill
           sizes="(max-width: 640px) 192px, 224px"
