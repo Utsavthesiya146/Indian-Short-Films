@@ -42,24 +42,24 @@ export const Navbar: React.FC = () => {
               <div className="flex items-center">
                 {/* "indian" */}
                 <span className="font-display font-black text-[28px] text-white tracking-tight flex items-center">
-                  <span className="relative flex justify-center">i<span className="absolute top-[6px] w-[8px] h-[8px] rounded-full bg-[#FF204E]"></span></span>
+                  <span className="relative inline-block">i<span className="absolute top-[7px] left-1/2 -translate-x-1/2 w-[11px] h-[11px] rounded-full bg-[#FF204E]"></span></span>
                   nd
-                  <span className="relative flex justify-center">i<span className="absolute top-[6px] w-[8px] h-[8px] rounded-full bg-[#FF204E]"></span></span>
+                  <span className="relative inline-block">i<span className="absolute top-[7px] left-1/2 -translate-x-1/2 w-[11px] h-[11px] rounded-full bg-[#FF204E]"></span></span>
                   an
                 </span>
                 
                 {/* "short" badge */}
-                <div className="-rotate-[3deg] inline-flex items-center justify-center gap-1.5 px-3 py-1 rounded-xl bg-gradient-to-r from-[#FF3B4C] to-[#E50914] mx-1.5 shadow-lg">
+                <div className="-rotate-[3deg] inline-flex items-center justify-center gap-1.5 px-3 py-1 rounded-xl bg-gradient-to-r from-[#f84464] via-[#dc2626] to-[#8b5cf6] mx-1.5 shadow-lg">
                   <span className="font-display font-black text-white text-[19px] tracking-tight leading-none mt-0.5">short</span>
                   <div className="w-[18px] h-[18px] rounded-full bg-white flex items-center justify-center shadow-inner">
-                    <div className="w-0 h-0 border-t-[4px] border-t-transparent border-l-[6px] border-l-[#E50914] border-b-[4px] border-b-transparent ml-[2px]"></div>
+                    <div className="w-0 h-0 border-t-[4px] border-t-transparent border-l-[6px] border-l-[#dc2626] border-b-[4px] border-b-transparent ml-[2px]"></div>
                   </div>
                 </div>
 
                 {/* "movie" */}
                 <span className="font-display font-black text-[28px] text-white tracking-tight flex items-center">
                   mov
-                  <span className="relative flex justify-center">i<span className="absolute top-[6px] w-[8px] h-[8px] rounded-full bg-[#FF204E]"></span></span>
+                  <span className="relative inline-block">i<span className="absolute top-[7px] left-1/2 -translate-x-1/2 w-[11px] h-[11px] rounded-full bg-[#FF204E]"></span></span>
                   e
                 </span>
               </div>
