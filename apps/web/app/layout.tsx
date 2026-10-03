@@ -4,13 +4,13 @@ import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Indian Short Films | Discover India. Watch Stories.',
-  description: 'The premium OTT platform for Indian short films, independent cinema, and visionary filmmakers across all Indian languages.',
-  keywords: ['Indian Short Films', 'Indie Cinema', 'Hindi Short Films', 'Tamil Short Films', 'Telugu Short Films', 'Gujarati Short Films', 'OTT Streaming'],
+  title: 'Indian Short Movie | Premier Indian Cinema, Short Films & Reels',
+  description: 'The premier cinematic platform for Indian short films, vertical reels, independent filmmakers, and digital creators.',
+  keywords: ['Indian Short Movie', 'Indie Cinema', 'Hindi Short Films', 'Tamil Short Films', 'Telugu Short Films', 'Gujarati Short Films', 'OTT Streaming'],
   openGraph: {
-    title: 'Indian Short Films | Discover India. Watch Stories.',
-    description: 'Explore handpicked independent short films from visionary Indian directors.',
-    siteName: 'Indian Short Films',
+    title: 'Indian Short Movie | Premier Indian Cinema, Short Films & Reels',
+    description: 'The premier cinematic platform for Indian short films, vertical reels, independent filmmakers, and digital creators.',
+    siteName: 'Indian Short Movie',
     images: [
       {
         url: 'https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&w=1200&q=80',

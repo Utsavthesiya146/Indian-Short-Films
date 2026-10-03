@@ -25,16 +25,16 @@ export default async function HomePage() {
 
       {/* Section 1: Trending Now */}
       <FilmRow
-        title="Trending Now"
-        subtitle="Most watched Indian short films this week"
+        title="Trending Indian Short Films"
+        subtitle="Curated Selections"
         films={trendingFilms.length > 0 ? trendingFilms : films.slice(0, 4)}
         icon={<Flame className="w-6 h-6 text-cinema-accent fill-cinema-accent" />}
       />
 
       {/* Section 2: Top Rated */}
       <FilmRow
-        title="Top Rated Cinema"
-        subtitle="Critically acclaimed short films rated by film lovers"
+        title="Visionary Filmmakers"
+        subtitle="Independent Creators"
         films={topRatedFilms}
         icon={<Star className="w-6 h-6 text-cinema-gold fill-cinema-gold" />}
       />
