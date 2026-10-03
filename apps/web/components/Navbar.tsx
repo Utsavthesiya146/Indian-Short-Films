@@ -38,38 +38,39 @@ export const Navbar: React.FC = () => {
           
           {/* Brand Logo & Tagline */}
           <div className="flex items-center gap-8">
-            <Link href="/" className="flex flex-col items-start gap-0.5 group">
-              <div className="flex items-center gap-1">
-                <span className="font-sans font-black text-xl text-white tracking-tight relative">
-                  i<span className="relative inline-block">n<span className="absolute -top-0.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#f84464]"></span></span>d<span className="relative inline-block">i<span className="absolute -top-0.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#f84464]"></span></span>an
+            <Link href="/" className="flex flex-col items-center justify-center gap-0 group">
+              <div className="flex items-center">
+                {/* "indian" */}
+                <span className="font-sans font-black text-[26px] text-white tracking-tight flex items-baseline">
+                  <span className="relative inline-block">ı<span className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#FF204E]"></span></span>
+                  nd
+                  <span className="relative inline-block">ı<span className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#FF204E]"></span></span>
+                  an
                 </span>
-                <div className="-rotate-2 inline-block mx-1">
-                  <svg viewBox="0 0 94 36" className="h-6 w-auto" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                      <linearGradient id="ticketGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#f84464" />
-                        <stop offset="60%" stopColor="#dc2626" />
-                        <stop offset="100%" stopColor="#8b5cf6" />
-                      </linearGradient>
-                    </defs>
-                    <path d="M 6 0 L 39 0 A 6 6 0 0 1 55 0 L 88 0 C 91.3 0 94 2.7 94 6 L 94 30 C 94 33.3 89.3 36 88 36 L 55 36 A 6 6 0 0 1 39 36 L 6 36 C 2.7 36 0 33.3 0 30 L 0 6 C 0 2.7 2.7 0 6 0 Z" fill="url(#ticketGradient)" />
-                    <text x="11" y="24" fill="#ffffff" className="font-sans font-black text-[16.5px] tracking-[-0.6px]">short</text>
-                    <g transform="translate(64, 10)">
-                      <circle cx="8" cy="8" r="7.5" fill="#ffffff" />
-                      <polygon points="6.5,5 11.5,8 6.5,11" fill="#dc2626" />
-                    </g>
-                  </svg>
+                
+                {/* "short" badge */}
+                <div className="-rotate-[3deg] inline-flex items-center justify-center gap-1.5 px-2.5 py-1 rounded-[10px] bg-gradient-to-r from-[#FF4858] to-[#E50914] mx-2 shadow-lg">
+                  <span className="font-sans font-black text-white text-[19px] tracking-tight leading-none mt-0.5">short</span>
+                  <div className="w-[18px] h-[18px] rounded-full bg-white flex items-center justify-center shadow-inner">
+                    <div className="w-0 h-0 border-t-[4px] border-t-transparent border-l-[6px] border-l-[#E50914] border-b-[4px] border-b-transparent ml-0.5"></div>
+                  </div>
                 </div>
-                <span className="font-sans font-black text-xl text-white tracking-tight relative">
-                  mov<span className="relative inline-block">i<span className="absolute -top-0.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#f84464]"></span></span>e
+
+                {/* "movie" */}
+                <span className="font-sans font-black text-[26px] text-white tracking-tight flex items-baseline">
+                  mov
+                  <span className="relative inline-block">ı<span className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#FF204E]"></span></span>
+                  e
                 </span>
               </div>
-              <div className="flex items-center gap-1.5 mt-0.5">
-                <span className="w-3 h-[1px] bg-cinema-accent/60"></span>
-                <span className="text-[8px] font-bold tracking-[0.2em] text-cinema-muted uppercase">
+
+              {/* Tagline */}
+              <div className="flex items-center gap-2 mt-1 w-full justify-center opacity-80">
+                <span className="w-6 h-[1px] bg-[#FF204E]"></span>
+                <span className="text-[9px] font-bold tracking-[0.25em] text-gray-400 uppercase">
                   India&apos;s Stories on Screen
                 </span>
-                <span className="w-3 h-[1px] bg-cinema-accent/60"></span>
+                <span className="w-6 h-[1px] bg-[#FF204E]"></span>
               </div>
             </Link>
 
