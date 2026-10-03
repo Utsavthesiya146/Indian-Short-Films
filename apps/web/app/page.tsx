@@ -16,7 +16,7 @@ export default async function HomePage() {
 
   const heroFilm = featured[0] || films[0];
   const topRatedFilms = [...films].sort((a, b) => b.rating_average - a.rating_average);
-
+  return (
     <>
       {/* Hero Section */}
       {heroFilm && <HeroBanner film={heroFilm} />}
