@@ -124,20 +124,15 @@ export function resolveMediaUrl(urlOrPath?: string | null, bucket: 'film-videos'
 
   const cleanUrl = urlOrPath.trim();
 
-  // Remove dummy/sample/placeholder video URLs
-  const isDummyUrl = cleanUrl.includes('commondatastorage.googleapis.com') ||
-                     cleanUrl.includes('sintel') ||
-                     cleanUrl.includes('BigBuckBunny') ||
-                     cleanUrl.includes('flower.mp4') ||
-                     cleanUrl.includes('oceans.mp4') ||
-                     cleanUrl.includes('sample.mp4') ||
-                     cleanUrl.includes('dummy.mp4') ||
-                     cleanUrl.includes('placeholder.mp4') ||
-                     cleanUrl.includes('test-video') ||
-                     cleanUrl.includes('demo-video');
-  
-  if (isDummyUrl) {
-    return '';
+  // Replace legacy 403 Google Cloud sample links with high-availability public MP4 streams
+  if (cleanUrl.includes('commondatastorage.googleapis.com/gtv-videos-bucket/sample/')) {
+    if (cleanUrl.includes('ElephantsDream') || cleanUrl.includes('ForBiggerEscapes')) {
+      return 'https://media.w3.org/2010/05/sintel/trailer.mp4';
+    }
+    if (cleanUrl.includes('TearsOfSteel') || cleanUrl.includes('ForBiggerFun')) {
+      return 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4';
+    }
+    return 'https://vjs.zencdn.net/v/oceans.mp4';
   }
 
   // If already a full HTTP/HTTPS URL, return directly
@@ -234,8 +229,8 @@ export async function getFilms(filters?: {
       let filtered = [...mockFilms];
       if (filters?.search) {
         const searchTerm = filters.search.toLowerCase();
-        filtered = filtered.filter(f => 
-          f.title.toLowerCase().includes(searchTerm) || 
+        filtered = filtered.filter(f =>
+          f.title.toLowerCase().includes(searchTerm) ||
           f.director.toLowerCase().includes(searchTerm)
         );
       }
@@ -384,7 +379,7 @@ export async function updateWatchHistory(filmId: string, lastPositionSeconds: nu
     if (!session?.user) return;
     await ensureProfileExists(session.user);
 
-    const completionPercentage = durationSeconds > 0 
+    const completionPercentage = durationSeconds > 0
       ? Math.min(100, Math.round((lastPositionSeconds / durationSeconds) * 100))
       : 0;
 
