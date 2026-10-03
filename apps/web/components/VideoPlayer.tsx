@@ -100,12 +100,42 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
   if (!videoUrl) {
     return (
-      <div className="relative w-full aspect-video rounded-3xl overflow-hidden bg-black border border-cinema-border shadow-2xl flex flex-col items-center justify-center p-6 text-center">
-        <AlertTriangle className="w-12 h-12 text-cinema-muted mb-3" />
-        <h3 className="text-lg font-bold text-white mb-1">Video Not Available</h3>
-        <p className="text-xs text-cinema-muted max-w-md leading-relaxed">
-          The official video source for {title} is currently unavailable.
-        </p>
+      <div className="relative w-full aspect-video rounded-3xl overflow-hidden bg-[#0a0a0a] border border-cinema-border shadow-[0_0_50px_rgba(229,9,20,0.1)] flex flex-col items-center justify-center p-6 text-center group">
+        {/* Background Layer */}
+        {posterUrl && (
+          <>
+            <div 
+              className="absolute inset-0 bg-cover bg-center opacity-30 blur-md scale-105 transition-transform duration-1000 group-hover:scale-100" 
+              style={{ backgroundImage: `url(${posterUrl})` }} 
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
+          </>
+        )}
+        
+        {/* Animated Accent glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-cinema-accent/20 rounded-full blur-[80px] animate-pulse" />
+
+        <div className="relative z-10 flex flex-col items-center">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-cinema-card border border-cinema-border/50 flex items-center justify-center mb-4 sm:mb-6 shadow-2xl backdrop-blur-md relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-tr from-cinema-accent/20 to-transparent opacity-50" />
+            <AlertTriangle className="w-8 h-8 sm:w-10 sm:h-10 text-cinema-accent animate-pulse relative z-10" />
+          </div>
+          
+          <h3 className="text-2xl sm:text-3xl font-display font-black text-white mb-2 sm:mb-3 tracking-tight">
+            Premiere Upcoming
+          </h3>
+          
+          <p className="text-xs sm:text-sm text-gray-400 max-w-sm sm:max-w-md leading-relaxed mb-6 sm:mb-8 px-4">
+            The official digital screening for <span className="text-white font-bold">"{title}"</span> is currently being scheduled. Join the waitlist to be notified first.
+          </p>
+
+          <button 
+            className="px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-white/10 hover:bg-cinema-accent text-white font-bold text-xs sm:text-sm flex items-center gap-2 border border-white/10 hover:border-cinema-accent transition-all duration-300 shadow-xl"
+            onClick={() => alert(`You have been added to the waitlist for ${title}!`)}
+          >
+            <Play className="w-4 h-4 fill-white" /> Notify Me When Available
+          </button>
+        </div>
       </div>
     );
   }
