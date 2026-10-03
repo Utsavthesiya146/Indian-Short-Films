@@ -11,7 +11,7 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           
           {/* Brand Info */}
-          <div className="md:col-span-1 space-y-4">
+          <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
               <span className="font-sans font-black text-lg text-white tracking-tight">
                 INDIAN SHORT MOVIE
@@ -46,13 +46,7 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Legal & System */}
-          <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">Platform</h4>
-            <ul className="space-y-2 text-xs text-cinema-muted">
-              <li><Link href="/admin" className="hover:text-cinema-accent transition-colors flex items-center gap-1"><Shield className="w-3.5 h-3.5 text-cinema-accent" /> Admin Portal</Link></li>
-            </ul>
-          </div>
+
 
         </div>
 

@@ -111,14 +111,7 @@ export const Navbar: React.FC = () => {
               Submit Film
             </Link>
 
-            {/* Admin Dashboard Entry Link */}
-            <Link
-              href="/admin"
-              className="px-3 py-2 rounded-xl bg-cinema-card/80 hover:bg-cinema-accent/20 border border-cinema-border text-xs font-medium text-cinema-muted hover:text-cinema-accent flex items-center gap-1.5 transition-all"
-            >
-              <Shield className="w-4 h-4 text-cinema-accent" />
-              Admin
-            </Link>
+
 
             {/* Auth Button */}
             {user ? (
@@ -194,13 +187,7 @@ export const Navbar: React.FC = () => {
           >
             Submit Film
           </Link>
-          <Link
-            href="/admin"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-lg text-base font-medium text-cinema-accent hover:bg-cinema-card"
-          >
-            Admin Dashboard
-          </Link>
+
           {user ? (
             <button
               onClick={() => {
