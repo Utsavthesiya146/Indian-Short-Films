@@ -56,11 +56,11 @@ export const Footer: React.FC = () => {
 
         </div>
 
-        <div className="border-t border-cinema-border/50 pt-6 flex flex-col md:flex-row items-center justify-between text-xs text-cinema-muted gap-4">
-          <p>© {new Date().getFullYear()} Indian Short Movie. All rights reserved.</p>
-          <p className="flex items-center gap-1">
+        <div className="border-t border-cinema-border/50 pt-6 flex flex-wrap items-center justify-start text-xs text-cinema-muted gap-2">
+          <span>© {new Date().getFullYear()} Indian Short Films. All rights reserved.</span>
+          <span className="flex items-center gap-1">
             With love ❤️ <a href="https://webhostingbaba.com" target="_blank" rel="noopener noreferrer" className="text-red-500 font-bold hover:underline">HOSTING BABA</a>
-          </p>
+          </span>
         </div>
       </div>
     </footer>
