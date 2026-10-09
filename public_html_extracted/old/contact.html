@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Contact Us | Indian Short Movie</title>
+  <meta name="description" content="Get in touch with Indian Short Movie team for film distribution, creator submissions, sponsorships, and technical support.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Site Navigation -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-main">
+          <span>indian</span>
+          <span style="color: #ef4444; font-size: 0.8em;">•</span>
+          <span>short movie</span>
+        </div>
+        <div class="brand-sub">INDIAN GLOBAL FILMS</div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Gallery/Projects</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="admin/index.html" class="admin-nav-btn">
+          <span>⚙ Admin</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Contact Hero Header -->
+    <section class="hero-section" style="padding: 3rem 0 2rem 0;">
+      <div class="hero-bg-static">
+        <div class="hero-bg-image" style="opacity: 0.12;"></div>
+        <div class="hero-bg-gradient"></div>
+        <div class="hero-glow-purple"></div>
+      </div>
+      <div class="container" style="position: relative; z-index: 10; text-align: center; max-width: 750px;">
+        <div class="badge-purple" style="margin-bottom: 0.75rem;">Get in Touch</div>
+        <h1 class="hero-headline" style="font-size: 3rem;">
+          Connect With <span class="gradient-text">Our Team</span>
+        </h1>
+        <p class="hero-desc" style="margin: 0 auto;">
+          Whether you are a filmmaker seeking distribution, a brand looking for collaborations, or an audience member with feedback—we’d love to hear from you.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Grid -->
+    <section style="padding: 3rem 0 5rem 0;">
+      <div class="container">
+        <div class="contact-grid">
+          
+          <!-- Contact Form -->
+          <div class="glass-card" style="padding: 2.5rem;">
+            <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Send a Message</h2>
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1.5rem;">
+              Fill in your inquiry below. Our team responds within 24–48 business hours.
+            </p>
+
+            <div id="contact-alert" style="display: none; background: rgba(34, 197, 94, 0.15); border: 1px solid rgba(34, 197, 94, 0.4); color: #86efac; padding: 0.85rem 1rem; border-radius: 0.75rem; font-size: 0.875rem; margin-bottom: 1.25rem;"></div>
+
+            <form onsubmit="handleContactSubmit(event)">
+              <div class="form-group">
+                <label class="form-label" for="contact-name">Full Name *</label>
+                <input type="text" id="contact-name" class="form-input" placeholder="e.g. Ramesh Varma" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contact-email">Email Address *</label>
+                <input type="email" id="contact-email" class="form-input" placeholder="name@domain.com" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contact-topic">Inquiry Type</label>
+                <select id="contact-topic" class="form-select">
+                  <option value="Film Submission">Film Screener / Submission</option>
+                  <option value="Distribution">Festival / OTT Distribution</option>
+                  <option value="Hosting Partner">Web Hosting Baba Cloud Infrastructure</option>
+                  <option value="General Inquiry">General Feedback</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contact-message">Your Message *</label>
+                <textarea id="contact-message" class="form-textarea" rows="4" placeholder="Tell us about your project, screener link, or inquiry..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary" style="width: 100%;">
+                Send Inquiry ➔
+              </button>
+            </form>
+          </div>
+
+          <!-- Contact Details & Offices -->
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <div class="glass-card" style="padding: 2rem;">
+              <h3 style="font-size: 1.25rem; margin-bottom: 1rem;">Offices & Distribution Hubs</h3>
+              
+              <div style="margin-bottom: 1.25rem;">
+                <div style="font-weight: 700; color: #fff; font-size: 0.95rem;">📍 Bengaluru HQ</div>
+                <div style="color: var(--text-muted); font-size: 0.85rem;">Indiranagar 100ft Road, Bengaluru, Karnataka 560038</div>
+              </div>
+
+              <div style="margin-bottom: 1.25rem;">
+                <div style="font-weight: 700; color: #fff; font-size: 0.95rem;">📍 Mumbai Studio</div>
+                <div style="color: var(--text-muted); font-size: 0.85rem;">Andheri West, Mumbai, Maharashtra 400053</div>
+              </div>
+
+              <div>
+                <div style="font-weight: 700; color: #fff; font-size: 0.95rem;">📍 Hyderabad Production Desk</div>
+                <div style="color: var(--text-muted); font-size: 0.85rem;">Jubilee Hills, Hyderabad, Telangana 500033</div>
+              </div>
+            </div>
+
+            <div class="glass-card" style="padding: 2rem; border-color: rgba(139, 92, 246, 0.25);">
+              <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem;">Technical & Cloud Partner</h3>
+              <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; margin-bottom: 1rem;">
+                Indian Short Movie is hosted and accelerated on ultra-high bandwidth cloud servers provided by Web Hosting Baba.
+              </p>
+              <a href="https://webhostingbaba.com/" target="_blank" rel="noopener noreferrer" class="hosting-baba-link" style="font-size: 0.95rem;">
+                Visit Web Hosting Baba ➔
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-main" style="margin-bottom: 0.75rem;">
+            <span>indian</span>
+            <span style="color: #ef4444; font-size: 0.8em;">•</span>
+            <span>short movie</span>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.8125rem; line-height: 1.6; max-width: 340px;">
+            The premier cinematic network for Indian short films, vertical reels, independent filmmakers, and digital creators.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="gallery.html">Gallery/Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Genres</h4>
+          <ul class="footer-links">
+            <li><a href="gallery.html">Drama</a></li>
+            <li><a href="gallery.html">Thriller</a></li>
+            <li><a href="gallery.html">Folklore</a></li>
+            <li><a href="gallery.html">Documentary</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Partner</h4>
+          <p style="color: var(--text-muted); font-size: 0.8125rem; margin-bottom: 0.75rem;">
+            Cloud infrastructure & high-speed streaming partner:
+          </p>
+          <a href="https://webhostingbaba.com/" target="_blank" rel="noopener noreferrer" class="hosting-baba-link">
+            WEB HOSTING BABA
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2025 Indian Short Movie • Indian Global Films. All Rights Reserved. • With love❤️ 
+          <a href="https://webhostingbaba.com/" target="_blank" rel="noopener noreferrer" class="hosting-baba-link">
+            HOSTING BABA
+          </a>
+        </div>
+        <div>
+          <a href="admin/index.html" class="admin-nav-btn">Admin Portal</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

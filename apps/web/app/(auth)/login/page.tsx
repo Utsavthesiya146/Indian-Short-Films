@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Film, LogIn, Mail, Lock, AlertCircle, Loader2 } from 'lucide-react';
-import { signInUser } from '@/lib/supabase';
+import { signIn } from 'next-auth/react';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -21,15 +21,23 @@ export default function LoginPage() {
     setSuccessMsg(null);
 
     try {
-      await signInUser({ email, password });
-      setSuccessMsg('Successfully signed in! Redirecting to home page...');
-      setTimeout(() => {
-        router.push('/');
-        router.refresh();
-      }, 1000);
+      const res = await signIn('credentials', {
+        email,
+        password,
+        redirect: false,
+      });
+      
+      if (res?.error) {
+        setErrorMsg('Invalid login credentials. Please try again.');
+      } else {
+        setSuccessMsg('Successfully signed in! Redirecting to home page...');
+        setTimeout(() => {
+          router.push('/');
+          router.refresh();
+        }, 1000);
+      }
     } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : 'Invalid login credentials. Please try again.';
-      setErrorMsg(message);
+      setErrorMsg('An unexpected error occurred.');
     } finally {
       setLoading(false);
     }

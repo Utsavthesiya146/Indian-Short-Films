@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Indian Short Films</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<!-- ─────────── SPLASH ─────────── -->
+<div id="splash">
+  <div class="splash-logo">indian <span>short</span> movie</div>
+  <div class="splash-bar"><div class="splash-fill" id="splash-fill"></div></div>
+  <div class="splash-tag">INDIA'S STORIES ON SCREEN</div>
+</div>
+
+<!-- ─────────── OFFLINE BAR ─────────── -->
+<div id="offline">📶 No internet connection. Please check your network.</div>
+
+<!-- ─────────── MAIN APP ─────────── -->
+<div id="app">
+  <div class="screens">
+
+    <!-- ══════ HOME SCREEN ══════ -->
+    <div class="screen active" id="screen-home">
+      <!-- Sticky topbar -->
+      <div class="topbar" id="home-topbar">
+        <div class="topbar-logo">indian <span class="short">short</span> movie</div>
+        <div class="topbar-actions">
+          <div class="icon-btn" onclick="goSearch()" title="Search">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+          <div class="avatar-btn" id="home-avatar" onclick="goProfile()">?</div>
+        </div>
+      </div>
+
+      <!-- Hero -->
+      <div class="hero" id="hero-section">
+        <img class="hero-bg" id="hero-bg" src="" alt="Featured Film">
+        <div class="hero-gradient"></div>
+        <div class="hero-dots" id="hero-dots"></div>
+        <div class="hero-content">
+          <div class="hero-badges">
+            <span class="hero-badge lang" id="hero-lang">Hindi</span>
+            <span class="hero-badge genre" id="hero-genre">Drama</span>
+            <span class="hero-badge rating" id="hero-rating">★ 4.8</span>
+          </div>
+          <div class="hero-title" id="hero-title">Loading...</div>
+          <div class="hero-meta" id="hero-meta">Dir. — • 15 mins</div>
+          <div class="hero-btns">
+            <button class="btn-play" id="hero-play">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Play Now
+            </button>
+            <button class="btn-wl" id="hero-wl">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trending Section -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">
+            <div class="section-icon red">🔥</div>
+            Trending Now
+          </div>
+          <span class="section-viewall" onclick="switchTab('discover')">See all →</span>
+        </div>
+        <div class="films-row" id="trending-row">
+          <!-- skeletons -->
+          <div class="skeleton-card"><div class="skeleton skeleton-poster"></div><div class="skeleton skeleton-line"></div></div>
+          <div class="skeleton-card"><div class="skeleton skeleton-poster"></div><div class="skeleton skeleton-line"></div></div>
+          <div class="skeleton-card"><div class="skeleton skeleton-poster"></div><div class="skeleton skeleton-line"></div></div>
+        </div>
+      </div>
+
+      <!-- Top Rated Section -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">
+            <div class="section-icon gold">⭐</div>
+            Top Rated
+          </div>
+          <span class="section-viewall" onclick="switchTab('discover')">See all →</span>
+        </div>
+        <div class="films-row" id="toprated-row">
+          <div class="skeleton-card"><div class="skeleton skeleton-poster"></div><div class="skeleton skeleton-line"></div></div>
+          <div class="skeleton-card"><div class="skeleton skeleton-poster"></div><div class="skeleton skeleton-line"></div></div>
+        </div>
+      </div>
+
+      <!-- Browse by Language -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">
+            <div class="section-icon teal">🌐</div>
+            Browse Language
+          </div>
+        </div>
+        <div class="lang-chips" id="lang-chips">
+          <div class="lang-chip active" onclick="filterByLang('All')"><span>All</span><span class="native">सभी</span></div>
+          <div class="lang-chip" onclick="filterByLang('Hindi')"><span>Hindi</span><span class="native">हिन्दी</span></div>
+          <div class="lang-chip" onclick="filterByLang('Kannada')"><span>Kannada</span><span class="native">ಕನ್ನಡ</span></div>
+          <div class="lang-chip" onclick="filterByLang('Tamil')"><span>Tamil</span><span class="native">தமிழ்</span></div>
+          <div class="lang-chip" onclick="filterByLang('Telugu')"><span>Telugu</span><span class="native">తెలుగు</span></div>
+          <div class="lang-chip" onclick="filterByLang('Malayalam')"><span>Malayalam</span><span class="native">മലയാളം</span></div>
+          <div class="lang-chip" onclick="filterByLang('Gujarati')"><span>Gujarati</span><span class="native">ગુજરાતી</span></div>
+          <div class="lang-chip" onclick="filterByLang('Marathi')"><span>Marathi</span><span class="native">मराठी</span></div>
+          <div class="lang-chip" onclick="filterByLang('Bengali')"><span>Bengali</span><span class="native">বাংলা</span></div>
+        </div>
+        <div class="films-row" id="lang-filtered-row" style="margin-top:12px;">
+          <div class="skeleton-card"><div class="skeleton skeleton-poster"></div><div class="skeleton skeleton-line"></div></div>
+          <div class="skeleton-card"><div class="skeleton skeleton-poster"></div><div class="skeleton skeleton-line"></div></div>
+        </div>
+      </div>
+
+      <!-- Recent Releases -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">
+            <div class="section-icon teal">✨</div>
+            Recent Releases
+          </div>
+        </div>
+        <div class="films-row" id="recent-row">
+          <div class="skeleton-card"><div class="skeleton skeleton-poster"></div><div class="skeleton skeleton-line"></div></div>
+          <div class="skeleton-card"><div class="skeleton skeleton-poster"></div><div class="skeleton skeleton-line"></div></div>
+        </div>
+      </div>
+    </div>
+    <!-- END HOME -->
+
+    <!-- ══════ DISCOVER SCREEN ══════ -->
+    <div class="screen" id="screen-discover">
+      <div class="discover-topbar">
+        <div class="discover-title">Discover</div>
+        <div class="search-bar" onclick="goSearch()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8E95A5" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <span style="font-size:14px;color:var(--muted);">Search films, directors...</span>
+        </div>
+        <div class="filter-chips" id="discover-genre-chips">
+          <div class="filter-chip active" onclick="filterDiscover('All',this)">All</div>
+          <div class="filter-chip" onclick="filterDiscover('Drama',this)">Drama</div>
+          <div class="filter-chip" onclick="filterDiscover('Thriller',this)">Thriller</div>
+          <div class="filter-chip" onclick="filterDiscover('Romance',this)">Romance</div>
+          <div class="filter-chip" onclick="filterDiscover('Documentary',this)">Documentary</div>
+          <div class="filter-chip" onclick="filterDiscover('Comedy',this)">Comedy</div>
+          <div class="filter-chip" onclick="filterDiscover('Folklore',this)">Folklore</div>
+          <div class="filter-chip" onclick="filterDiscover('Sci-Fi',this)">Sci-Fi</div>
+        </div>
+      </div>
+      <div class="discover-grid" id="discover-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+    <!-- END DISCOVER -->
+
+    <!-- ══════ SEARCH SCREEN ══════ -->
+    <div class="screen" id="screen-search">
+      <div class="search-topbar">
+        <div class="search-bar" style="margin-top:calc(var(--safe-top));">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8E95A5" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="search" id="search-input" placeholder="Search films, directors, language..." autocomplete="off" oninput="doSearch(this.value)">
+          <span style="font-size:20px;color:var(--muted);cursor:pointer;" onclick="clearSearch()">✕</span>
+        </div>
+      </div>
+      <div class="search-results" id="search-results">
+        <div class="search-empty">
+          <div class="search-empty-icon">🎬</div>
+          <div class="search-empty-text">Search for films, directors,<br>languages or genres</div>
+        </div>
+      </div>
+    </div>
+    <!-- END SEARCH -->
+
+    <!-- ══════ PROFILE SCREEN ══════ -->
+    <div class="screen" id="screen-profile">
+      <div class="profile-screen" id="profile-content">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+    <!-- END PROFILE -->
+
+
+    <!-- ══════ WATCHLIST SCREEN ══════ -->
+    <div class="screen" id="screen-watchlist">
+      <div class="discover-topbar">
+        <div class="discover-title">My Watchlist</div>
+      </div>
+      <div class="discover-grid" id="watchlist-grid">
+        <div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted);font-size:13px;">Loading watchlist...</div>
+      </div>
+    </div>
+    <!-- END WATCHLIST -->
+
+    <!-- ══════ SUBMIT FILM SCREEN ══════ -->
+    <div class="screen" id="screen-submit">
+      <div class="discover-topbar" style="display:flex;align-items:center;gap:12px;background:linear-gradient(180deg, rgba(17,19,25,1) 0%, rgba(17,19,25,0.8) 100%);border-bottom:1px solid rgba(255,255,255,0.05);backdrop-filter:blur(10px);">
+        <div style="font-size:22px;cursor:pointer;color:rgba(255,255,255,0.7);padding:4px;border-radius:50%;background:rgba(255,255,255,0.05);width:32px;height:32px;display:flex;align-items:center;justify-content:center;transition:background 0.3s;" onclick="switchTab('profile')">←</div>
+        <div class="discover-title" style="margin:0;font-size:20px;font-weight:800;letter-spacing:0.5px;background:linear-gradient(to right, #ffffff, #a7b5d1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Submit Your Film</div>
+      </div>
+      <div style="padding:24px 20px 100px;">
+        <div style="background:linear-gradient(145deg, rgba(38,42,54,0.7), rgba(24,27,36,0.9));border:1px solid rgba(255,255,255,0.08);border-radius:24px;padding:28px 24px;box-shadow:0 15px 35px rgba(0,0,0,0.3);backdrop-filter:blur(20px);">
+          
+          <div style="text-align:center;margin-bottom:24px;">
+            <div style="width:50px;height:50px;background:rgba(229,9,20,0.15);border-radius:14px;color:#E50914;font-size:24px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;transform:rotate(-5deg);">🎬</div>
+            <p style="color:rgba(255,255,255,0.6);font-size:13px;line-height:1.5;">Showcase your creativity to thousands of viewers across India. Upload your short film below.</p>
+          </div>
+
+          <form id="submit-form" onsubmit="doSubmitFilm(event)" style="display:flex;flex-direction:column;gap:16px;">
+            <div>
+              <label style="display:block;margin-bottom:6px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;">Film Title</label>
+              <input class="auth-input" type="text" id="sf-title" placeholder="e.g., The Silent Valley" required style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:14px 16px;font-size:15px;color:#fff;width:100%;transition:all 0.3s;box-sizing:border-box;">
+            </div>
+            
+            <div>
+              <label style="display:block;margin-bottom:6px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;">Director Name</label>
+              <input class="auth-input" type="text" id="sf-director" placeholder="e.g., Aarav Sharma" required style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:14px 16px;font-size:15px;color:#fff;width:100%;transition:all 0.3s;box-sizing:border-box;">
+            </div>
+            
+            <div style="display:flex;gap:12px;">
+              <div style="flex:1;">
+                <label style="display:block;margin-bottom:6px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;">Language</label>
+                <input class="auth-input" type="text" id="sf-language" placeholder="Hindi, English..." required style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:14px 16px;font-size:15px;color:#fff;width:100%;transition:all 0.3s;box-sizing:border-box;">
+              </div>
+              <div style="flex:1;">
+                <label style="display:block;margin-bottom:6px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;">Genre</label>
+                <select class="auth-input" id="sf-genre" required style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:14px 16px;font-size:15px;color:rgba(255,255,255,0.8);width:100%;transition:all 0.3s;box-sizing:border-box;appearance:none;cursor:pointer;">
+                  <option value="" disabled selected>Select Genre</option>
+                  <option value="Drama">Drama</option>
+                  <option value="Suspense">Suspense</option>
+                  <option value="Thriller">Thriller</option>
+                  <option value="Romance">Romance</option>
+                  <option value="Comedy">Comedy</option>
+                  <option value="Horror">Horror</option>
+                  <option value="Action">Action</option>
+                  <option value="Documentary">Documentary</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+            
+            <div>
+              <label style="display:block;margin-bottom:6px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;">Synopsis</label>
+              <textarea class="auth-input" id="sf-synopsis" placeholder="Brief plot summary..." rows="3" required style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:14px 16px;font-size:15px;color:#fff;width:100%;transition:all 0.3s;box-sizing:border-box;resize:none;font-family:inherit;"></textarea>
+            </div>
+            
+            <div style="margin-top:8px;">
+              <label style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+                <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;">Poster Image</span>
+                <span style="font-size:10px;color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.05);padding:2px 6px;border-radius:4px;">Optional</span>
+              </label>
+              <div style="background:rgba(255,255,255,0.02);border:1px dashed rgba(255,255,255,0.2);border-radius:12px;padding:12px;position:relative;display:flex;align-items:center;gap:12px;">
+                <div style="width:36px;height:36px;background:rgba(255,255,255,0.05);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;">🖼️</div>
+                <input class="auth-input" type="file" id="sf-poster" accept="image/*" style="background:transparent;border:none;padding:0;font-size:13px;color:rgba(255,255,255,0.7);width:100%;cursor:pointer;">
+              </div>
+            </div>
+            
+            <div>
+              <label style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+                <span style="font-size:12px;font-weight:600;color:rgba(229,9,20,0.8);text-transform:uppercase;letter-spacing:1px;">Video File *</span>
+                <span style="font-size:10px;color:rgba(229,9,20,0.8);background:rgba(229,9,20,0.1);padding:2px 6px;border-radius:4px;">Max 25MB</span>
+              </label>
+              <div style="background:rgba(229,9,20,0.05);border:1px dashed rgba(229,9,20,0.3);border-radius:12px;padding:12px;position:relative;display:flex;align-items:center;gap:12px;transition:border 0.3s;" onmouseover="this.style.border='1px dashed rgba(229,9,20,0.6)'" onmouseout="this.style.border='1px dashed rgba(229,9,20,0.3)'">
+                <div style="width:36px;height:36px;background:rgba(229,9,20,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;color:#E50914;">📹</div>
+                <input class="auth-input" type="file" id="sf-video" accept="video/*" required style="background:transparent;border:none;padding:0;font-size:13px;color:rgba(255,255,255,0.9);width:100%;cursor:pointer;">
+              </div>
+            </div>
+            
+            <div id="sf-error" class="auth-error" style="margin-top:4px;border-radius:8px;padding:10px 14px;background:rgba(229,9,20,0.1);border:1px solid rgba(229,9,20,0.2);display:none;"></div>
+            
+            <button class="auth-btn" id="sf-submit-btn" type="submit" style="margin-top:12px;background:linear-gradient(135deg, #E50914, #ff3b30);border:none;border-radius:12px;padding:16px;font-size:16px;font-weight:700;color:white;box-shadow:0 8px 20px rgba(229,9,20,0.3);text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:transform 0.2s, box-shadow 0.2s;">
+              Upload & Submit Film
+            </button>
+            <div style="text-align:center;margin-top:8px;">
+              <span style="font-size:11px;color:rgba(255,255,255,0.3);">By submitting, you agree to our Terms & Conditions.</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- END SUBMIT FILM -->
+
+  </div><!-- end .screens -->
+
+  <!-- ── BOTTOM NAV ── -->
+  <nav id="bottom-nav">
+    <div class="nav-item active" id="nav-home" onclick="switchTab('home')">
+      <div class="nav-icon">🏠</div>
+      <div class="nav-label">Home</div>
+      <div class="nav-dot"></div>
+    </div>
+    <div class="nav-item" id="nav-discover" onclick="switchTab('discover')">
+      <div class="nav-icon">🎭</div>
+      <div class="nav-label">Discover</div>
+      <div class="nav-dot"></div>
+    </div>
+    <div class="nav-item" id="nav-watchlist" onclick="switchTab('watchlist')">
+      <div class="nav-icon">🔖</div>
+      <div class="nav-label">Watchlist</div>
+      <div class="nav-dot"></div>
+    </div>
+    <div class="nav-item" id="nav-profile" onclick="switchTab('profile')">
+      <div class="nav-icon">👤</div>
+      <div class="nav-label">Profile</div>
+      <div class="nav-dot"></div>
+    </div>
+  </nav>
+</div><!-- end #app -->
+
+<!-- ─────────── FILM DETAIL MODAL ─────────── -->
+<div id="film-detail">
+  <div class="detail-backdrop">
+    <img id="detail-backdrop-img" src="" alt="">
+    <div class="detail-backdrop-gradient"></div>
+    <div class="detail-close" onclick="closeDetail()">✕</div>
+    <button class="detail-play-btn" id="detail-play-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      Play Film
+    </button>
+  </div>
+  <div class="detail-info">
+    <div class="detail-title" id="detail-title">Title</div>
+    <div class="detail-meta-row" id="detail-meta-row"></div>
+    <div class="detail-actions">
+      <div class="detail-action-btn" id="detail-wl-btn" onclick="detailToggleWl()">
+        <div class="detail-action-icon" id="detail-wl-icon">🔖</div>
+        <div class="detail-action-label" id="detail-wl-label">Watchlist</div>
+      </div>
+    </div>
+    <div class="detail-section-label">Director</div>
+    <div class="detail-director">
+      <div class="detail-director-avatar">🎬</div>
+      <div id="detail-director">Unknown</div>
+    </div>
+    <div class="detail-section-label">Synopsis</div>
+    <div class="detail-synopsis" id="detail-synopsis">Loading...</div>
+    <div id="detail-more-row" style="margin-top:20px;"></div>
+  </div>
+</div>
+
+<!-- ─────────── VIDEO MODAL ─────────── -->
+<div id="video-modal">
+  <div id="video-close" onclick="closeVideo()">✕</div>
+  <video id="video-player" controls playsinline webkit-playsinline x5-playsinline preload="auto"></video>
+  <div class="video-meta">
+    <div class="video-meta-title" id="video-title"></div>
+    <div class="video-meta-dir" id="video-dir"></div>
+  </div>
+</div>
+
+<!-- ─────────── SIGN IN MODAL ─────────── -->
+<div class="auth-overlay" id="signin-overlay">
+  <div class="auth-sheet">
+    <div class="auth-handle"></div>
+    <div class="auth-title">Welcome Back</div>
+    <div class="auth-sub">Sign in to your Indian Short Films account</div>
+    <div class="auth-error" id="signin-error"></div>
+    <input class="auth-input" type="email" id="si-email" placeholder="Email address" autocomplete="email">
+    <input class="auth-input" type="password" id="si-password" placeholder="Password" autocomplete="current-password">
+    <button class="auth-btn" id="signin-btn" onclick="doSignIn()">Sign In</button>
+    <div class="auth-switch">Don't have an account? <a onclick="showSignup()">Sign Up</a></div>
+  </div>
+</div>
+
+<!-- ─────────── SIGN UP MODAL ─────────── -->
+<div class="auth-overlay" id="signup-overlay">
+  <div class="auth-sheet">
+    <div class="auth-handle"></div>
+    <div class="auth-title">Create Account</div>
+    <div class="auth-sub">Join the Indian Short Films community</div>
+    <div class="auth-error" id="signup-error"></div>
+    <input class="auth-input" type="text" id="su-name" placeholder="Full name" autocomplete="name">
+    <input class="auth-input" type="email" id="su-email" placeholder="Email address" autocomplete="email">
+    <input class="auth-input" type="password" id="su-password" placeholder="Create password" autocomplete="new-password">
+    <button class="auth-btn" id="signup-btn" onclick="doSignUp()">Create Account</button>
+    <div class="auth-switch">Already have an account? <a onclick="showSignin()">Sign In</a></div>
+  </div>
+</div>
+
+<!-- ─────────── TOAST ─────────── -->
+<div id="toast"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

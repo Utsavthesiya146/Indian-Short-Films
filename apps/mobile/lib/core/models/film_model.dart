@@ -35,93 +35,42 @@ class FilmModel {
     required this.languageName,
   });
 
+  static int _parseInt(dynamic value, {int defaultValue = 0}) {
+    if (value == null) return defaultValue;
+    if (value is int) return value;
+    if (value is num) return value.toInt();
+    if (value is String) return int.tryParse(value) ?? defaultValue;
+    return defaultValue;
+  }
+
+  static double _parseDouble(dynamic value, {double defaultValue = 0.0}) {
+    if (value == null) return defaultValue;
+    if (value is double) return value;
+    if (value is num) return value.toDouble();
+    if (value is String) return double.tryParse(value) ?? defaultValue;
+    return defaultValue;
+  }
+
   factory FilmModel.fromJson(Map<String, dynamic> json) {
     return FilmModel(
-      id: json['id'] ?? '',
-      title: json['title'] ?? '',
-      slug: json['slug'] ?? '',
-      description: json['description'] ?? '',
-      posterUrl: json['poster_url'] ?? '',
-      bannerUrl: json['banner_url'],
-      videoUrl: json['video_url'] ?? '',
-      durationSeconds: json['duration_seconds'] ?? 0,
-      releaseYear: json['release_year'] ?? 2024,
-      certificate: json['certificate'] ?? 'U',
-      director: json['director'] ?? '',
-      ratingAverage: (json['rating_average'] as num?)?.toDouble() ?? 0.0,
-      ratingCount: json['rating_count'] ?? 0,
-      viewsCount: json['views_count'] ?? 0,
-      likesCount: json['likes_count'] ?? 0,
-      languageName: json['language_name'] ?? 'Hindi',
+      id: (json['id'] ?? json['uuid'])?.toString() ?? '',
+      title: json['title']?.toString() ?? '',
+      slug: json['slug']?.toString() ?? '',
+      description: (json['synopsis'] ?? json['description'])?.toString() ?? '',
+      posterUrl: (json['posterUrl'] ?? json['poster_url'])?.toString() ?? '',
+      bannerUrl: (json['backdropUrl'] ?? json['banner_url'] ?? json['bannerUrl'])?.toString(),
+      videoUrl: (json['videoUrl'] ?? json['video_url'])?.toString() ?? '',
+      durationSeconds: _parseInt(json['duration'] ?? json['duration_seconds']),
+      releaseYear: _parseInt(json['releaseYear'] ?? json['release_year'], defaultValue: 2024),
+      certificate: (json['certificate'] ?? json['genre'])?.toString() ?? 'U',
+      director: json['director']?.toString() ?? '',
+      ratingAverage: _parseDouble(json['rating'] ?? json['rating_average'] ?? json['ratingAverage']),
+      ratingCount: _parseInt(json['ratingCount'] ?? json['rating_count']),
+      viewsCount: _parseInt(json['viewsCount'] ?? json['views_count']),
+      likesCount: _parseInt(json['likesCount'] ?? json['likes_count']),
+      languageName: (json['language'] ?? json['languageName'] ?? json['language_name'])?.toString() ?? 'Hindi',
     );
   }
 
-  static List<FilmModel> get sampleFilms => [
-        FilmModel(
-          id: 'f1',
-          title: 'Chai & Stories (चाय और किस्से)',
-          slug: 'chai-and-stories',
-          description:
-              'A poignant tale set in a bustling Mumbai tea stall where two strangers discover an unexpected connection over evening masala chai.',
-          posterUrl:
-              'https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&w=600&q=80',
-          bannerUrl:
-              'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1200&q=80',
-          videoUrl:
-              '',
-          durationSeconds: 720,
-          releaseYear: 2024,
-          certificate: 'U',
-          director: 'Aarav Sharma',
-          ratingAverage: 4.8,
-          ratingCount: 45,
-          viewsCount: 1450,
-          likesCount: 320,
-          languageName: 'Hindi',
-        ),
-        FilmModel(
-          id: 'f2',
-          title: 'The Last Letter (અંતિમ પત્ર)',
-          slug: 'the-last-letter',
-          description:
-              'A nostalgic Gujarati short film exploring an elderly artisan\'s journey through forgotten letters in vintage Ahmedabad.',
-          posterUrl:
-              'https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?auto=format&fit=crop&w=600&q=80',
-          bannerUrl:
-              'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80',
-          videoUrl:
-              '',
-          durationSeconds: 950,
-          releaseYear: 2024,
-          certificate: 'U',
-          director: 'Devang Patel',
-          ratingAverage: 4.65,
-          ratingCount: 28,
-          viewsCount: 980,
-          likesCount: 210,
-          languageName: 'Gujarati',
-        ),
-        FilmModel(
-          id: 'f3',
-          title: 'Midnight Express (இரவு பயணம்)',
-          slug: 'midnight-express',
-          description:
-              'A gripping Tamil psychological thriller centered around a late-night commuter in Chennai who notices a mysterious suitcase.',
-          posterUrl:
-              'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80',
-          bannerUrl:
-              'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80',
-          videoUrl:
-              '',
-          durationSeconds: 840,
-          releaseYear: 2023,
-          certificate: 'UA 13+',
-          director: 'Karthik Raja',
-          ratingAverage: 4.9,
-          ratingCount: 62,
-          viewsCount: 2300,
-          likesCount: 540,
-          languageName: 'Tamil',
-        ),
-      ];
+
 }

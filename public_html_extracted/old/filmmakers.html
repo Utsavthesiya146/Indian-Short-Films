@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Filmmakers Roster | Indian Short Movie</title>
+  <meta name="description" content="Discover visionary Indian short film directors, creators, screenwriters, and independent producers.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .creator-card {
+      background: var(--cinema-card);
+      border: 1px solid var(--cinema-border);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .creator-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(229, 9, 20, 0.4);
+      box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.6);
+    }
+    .avatar-wrapper {
+      position: relative;
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--cinema-border);
+      margin-bottom: 1rem;
+    }
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body class="bg-cinema-bg text-white">
+
+  <!-- Sticky Transparent Glass Header matching reference exactly -->
+  <header class="sticky top-0 z-50 glass-panel" style="position: sticky; top: 0; z-index: 50; background: rgba(17, 19, 25, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(38, 42, 54, 0.5);">
+    <div class="header-container" style="max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; height: 80px; display: flex; align-items: center; justify-content: space-between;">
+      
+      <!-- Brand Logo (Unchanged) & Navigation -->
+      <div style="display: flex; align-items: center; gap: 2rem;">
+        <a href="index.html" style="display: flex; flex-direction: column; align-items: flex-start; text-decoration: none;">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-family: system-ui, sans-serif; font-weight: 900; font-size: 1.25rem; color: #ffffff; letter-spacing: -0.03em;">
+              <span style="position: relative; display: inline-block;">i<span style="position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; border-radius: 50%; background-color: #f84464;"></span></span>nd<span style="position: relative; display: inline-block;">i<span style="position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; border-radius: 50%; background-color: #f84464;"></span></span>an
+            </span>
+            <div style="transform: rotate(-2deg); display: inline-block;">
+              <svg viewBox="0 0 94 36" style="height: 24px; width: auto;" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="navTicketDark" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#f84464" />
+                    <stop offset="60%" stopColor="#dc2626" />
+                    <stop offset="100%" stopColor="#8b5cf6" />
+                  </linearGradient>
+                </defs>
+                <path d="M 6 0 L 39 0 A 6 6 0 0 1 55 0 L 88 0 C 91.3 0 94 2.7 94 6 L 94 30 C 94 33.3 89.3 36 88 36 L 55 36 A 6 6 0 0 1 39 36 L 6 36 C 2.7 36 0 33.3 0 30 L 0 6 C 0 2.7 2.7 0 6 0 Z" fill="url(#navTicketDark)" />
+                <text x="11" y="24" fill="#ffffff" fontFamily="system-ui, sans-serif" fontWeight="900" fontSize="16.5" letterSpacing="-0.6px">short</text>
+                <g transform="translate(64, 10)">
+                  <circle cx="8" cy="8" r="7.5" fill="#ffffff" />
+                  <polygon points="6.5,5 11.5,8 6.5,11" fill="#dc2626" />
+                </g>
+              </svg>
+            </div>
+            <span style="font-family: system-ui, sans-serif; font-weight: 900; font-size: 1.25rem; color: #ffffff; letter-spacing: -0.03em;">
+              mov<span style="position: relative; display: inline-block;">i<span style="position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; border-radius: 50%; background-color: #f84464;"></span></span>e
+            </span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.35rem; margin-top: 2px;">
+            <span style="width: 12px; height: 1px; background: rgba(229, 9, 20, 0.6);"></span>
+            <span style="font-size: 8px; font-weight: 700; letter-spacing: 0.2em; color: #9ca3af; text-transform: uppercase;">India's Stories on Screen</span>
+            <span style="width: 12px; height: 1px; background: rgba(229, 9, 20, 0.6);"></span>
+          </div>
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="nav-links" style="display: flex; align-items: center; gap: 1.5rem;">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="discover.html" class="nav-link">Discover</a>
+          <a href="watchlist.html" class="nav-link">Watchlist</a>
+          <a href="filmmakers.html" class="nav-link active" style="color: #ffffff; font-weight: 700;">Filmmakers</a>
+        </nav>
+      </div>
+
+      <!-- Right Actions -->
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <button class="btn-submit" onclick="alert('Submit Film screener portal active.')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffb703" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+          Submit Film
+        </button>
+
+        <a href="admin/index.html" class="btn-admin" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.5rem 0.75rem; border-radius: 0.75rem; border: 1px solid var(--cinema-border); background: var(--cinema-card); color: var(--cinema-accent); font-size: 0.75rem; font-weight: 600; text-decoration: none;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          Admin
+        </a>
+
+        <button class="btn-signin" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.5rem 0.85rem; border-radius: 0.75rem; border: 1px solid var(--cinema-border); background: var(--cinema-surface); color: #ffffff; font-size: 0.75rem; font-weight: 600; cursor: pointer;" onclick="alert('Sign In modal initialized.')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" x2="3" y1="12" y2="12"/></svg>
+          Sign In
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Filmmakers Directory -->
+  <main style="max-width: 1280px; margin: 0 auto; padding: 2.5rem 1.5rem; min-height: 80vh;">
+    
+    <div style="margin-bottom: 2.5rem; text-align: center; max-width: 640px; margin-left: auto; margin-right: auto;">
+      <h1 class="font-display" style="font-size: 2.25rem; font-weight: 900; color: #ffffff; letter-spacing: -0.02em;">
+        Filmmaker Directory
+      </h1>
+      <p style="font-size: 0.875rem; color: var(--cinema-muted); margin-top: 0.5rem; line-height: 1.6;">
+        Meet the independent storytellers shaping Indian modern short cinema with distinctive visual voices and authentic regional narratives.
+      </p>
+    </div>
+
+    <!-- Filmmakers Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem;">
+      
+      <!-- Creator 1 -->
+      <div class="creator-card">
+        <div class="avatar-wrapper">
+          <img src="/harri-kumar.jpg" alt="Harri Kumar" class="avatar-img" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80'">
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.35rem; justify-content: center;">
+          <h3 style="font-weight: 700; font-size: 1.1rem; color: #ffffff;">Harri Kumar</h3>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#3b82f6"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4" stroke="#ffffff" stroke-width="2"/></svg>
+        </div>
+        <span style="font-size: 0.7rem; color: #e50914; font-weight: 700; text-transform: uppercase; margin-top: 0.25rem;">Director &amp; Cinematographer</span>
+        <p style="font-size: 0.75rem; color: #8e95a5; margin-top: 0.75rem; line-height: 1.5;">
+          Celebrated filmmaker from Bengaluru capturing intimate human journeys through Kannada and Hindi short films.
+        </p>
+        <div style="display: flex; gap: 1.5rem; margin-top: 1.25rem; border-top: 1px solid rgba(38,42,54,0.5); padding-top: 1rem; width: 100%; justify-content: center;">
+          <div>
+            <div style="font-size: 1.1rem; font-weight: 800; color: #ffffff;">6</div>
+            <div style="font-size: 0.65rem; color: #8e95a5;">Films</div>
+          </div>
+          <div>
+            <div style="font-size: 1.1rem; font-weight: 800; color: #66fcf1;">185K</div>
+            <div style="font-size: 0.65rem; color: #8e95a5;">Views</div>
+          </div>
+          <div>
+            <div style="font-size: 1.1rem; font-weight: 800; color: #ffb703;">4.9</div>
+            <div style="font-size: 0.65rem; color: #8e95a5;">Rating</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Creator 2 -->
+      <div class="creator-card">
+        <div class="avatar-wrapper">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Priya Hegde" class="avatar-img">
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.35rem; justify-content: center;">
+          <h3 style="font-weight: 700; font-size: 1.1rem; color: #ffffff;">Priya Hegde</h3>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#3b82f6"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4" stroke="#ffffff" stroke-width="2"/></svg>
+        </div>
+        <span style="font-size: 0.7rem; color: #e50914; font-weight: 700; text-transform: uppercase; margin-top: 0.25rem;">Writer &amp; Director</span>
+        <p style="font-size: 0.75rem; color: #8e95a5; margin-top: 0.75rem; line-height: 1.5;">
+          Specializing in regional Western Ghats folklore and evocative cultural mythology.
+        </p>
+        <div style="display: flex; gap: 1.5rem; margin-top: 1.25rem; border-top: 1px solid rgba(38,42,54,0.5); padding-top: 1rem; width: 100%; justify-content: center;">
+          <div>
+            <div style="font-size: 1.1rem; font-weight: 800; color: #ffffff;">4</div>
+            <div style="font-size: 0.65rem; color: #8e95a5;">Films</div>
+          </div>
+          <div>
+            <div style="font-size: 1.1rem; font-weight: 800; color: #66fcf1;">92K</div>
+            <div style="font-size: 0.65rem; color: #8e95a5;">Views</div>
+          </div>
+          <div>
+            <div style="font-size: 1.1rem; font-weight: 800; color: #ffb703;">4.8</div>
+            <div style="font-size: 0.65rem; color: #8e95a5;">Rating</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Creator 3 -->
+      <div class="creator-card">
+        <div class="avatar-wrapper">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80" alt="Vikramaditya Roy" class="avatar-img">
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.35rem; justify-content: center;">
+          <h3 style="font-weight: 700; font-size: 1.1rem; color: #ffffff;">Vikramaditya Roy</h3>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#3b82f6"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4" stroke="#ffffff" stroke-width="2"/></svg>
+        </div>
+        <span style="font-size: 0.7rem; color: #e50914; font-weight: 700; text-transform: uppercase; margin-top: 0.25rem;">Director &amp; VFX Artist</span>
+        <p style="font-size: 0.75rem; color: #8e95a5; margin-top: 0.75rem; line-height: 1.5;">
+          Fusing Indian mythology and futuristic metaphysical science fiction with Varanasi backdrops.
+        </p>
+        <div style="display: flex; gap: 1.5rem; margin-top: 1.25rem; border-top: 1px solid rgba(38,42,54,0.5); padding-top: 1rem; width: 100%; justify-content: center;">
+          <div>
+            <div style="font-size: 1.1rem; font-weight: 800; color: #ffffff;">5</div>
+            <div style="font-size: 0.65rem; color: #8e95a5;">Films</div>
+          </div>
+          <div>
+            <div style="font-size: 1.1rem; font-weight: 800; color: #66fcf1;">140K</div>
+            <div style="font-size: 0.65rem; color: #8e95a5;">Views</div>
+          </div>
+          <div>
+            <div style="font-size: 1.1rem; font-weight: 800; color: #ffb703;">4.7</div>
+            <div style="font-size: 0.65rem; color: #8e95a5;">Rating</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Creator 4 -->
+      <div class="creator-card">
+        <div class="avatar-wrapper">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80" alt="Meera Nambiar" class="avatar-img">
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.35rem; justify-content: center;">
+          <h3 style="font-weight: 700; font-size: 1.1rem; color: #ffffff;">Meera Nambiar</h3>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#3b82f6"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4" stroke="#ffffff" stroke-width="2"/></svg>
+        </div>
+        <span style="font-size: 0.7rem; color: #e50914; font-weight: 700; text-transform: uppercase; margin-top: 0.25rem;">Documentary Director</span>
+        <p style="font-size: 0.75rem; color: #8e95a5; margin-top: 0.75rem; line-height: 1.5;">
+          Kerala State Film Award nominee chronicling intangible cultural heritage and indigenous rituals.
+        </p>
+        <div style="display: flex; gap: 1.5rem; margin-top: 1.25rem; border-top: 1px solid rgba(38,42,54,0.5); padding-top: 1rem; width: 100%; justify-content: center;">
+          <div>
+            <div style="font-size: 1.1rem; font-weight: 800; color: #ffffff;">3</div>
+            <div style="font-size: 0.65rem; color: #8e95a5;">Films</div>
+          </div>
+          <div>
+            <div style="font-size: 1.1rem; font-weight: 800; color: #66fcf1;">76K</div>
+            <div style="font-size: 0.65rem; color: #8e95a5;">Views</div>
+          </div>
+          <div>
+            <div style="font-size: 1.1rem; font-weight: 800; color: #ffb703;">4.9</div>
+            <div style="font-size: 0.65rem; color: #8e95a5;">Rating</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- EXACT FOOTER -->
+  <footer class="site-footer" style="background-color: var(--cinema-surface); border-top: 1px solid var(--cinema-border); margin-top: 4rem; padding: 3rem 0 2rem;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 0 1.5rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+        <div>
+          <div style="font-weight: 900; font-size: 1.1rem; color: #ffffff; margin-bottom: 0.5rem;">INDIAN SHORT MOVIE</div>
+          <p style="font-size: 0.75rem; color: #8e95a5; line-height: 1.6;">
+            Dedicated platform celebrating independent storytelling, short cinema, and visionary filmmakers across all Indian languages.
+          </p>
+        </div>
+        <div>
+          <h4 style="font-size: 0.75rem; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">Discover</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.75rem; color: #8e95a5;">
+            <li><a href="discover.html" style="color: inherit; text-decoration: none;">Trending Now</a></li>
+            <li><a href="discover.html" style="color: inherit; text-decoration: none;">Top Rated</a></li>
+            <li><a href="discover.html" style="color: inherit; text-decoration: none;">Hindi Short Films</a></li>
+            <li><a href="discover.html" style="color: inherit; text-decoration: none;">Tamil Short Films</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-size: 0.75rem; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">Filmmakers</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.75rem; color: #8e95a5;">
+            <li><a href="#" onclick="alert('Submit Film screener portal active.')" style="color: inherit; text-decoration: none;">Submit Your Film</a></li>
+            <li><a href="filmmakers.html" style="color: inherit; text-decoration: none;">Filmmaker Directory</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-size: 0.75rem; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">Platform</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.75rem; color: #8e95a5;">
+            <li><a href="admin/index.html" style="color: inherit; text-decoration: none;">Admin Portal</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Exact Required Footer Text & Attribution -->
+      <div style="border-top: 1px solid rgba(38, 42, 54, 0.5); padding-top: 1.5rem;">
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: #8e95a5;">
+          <span>© 2026 Indian Short Films. All rights reserved.</span>
+          <span>With love ❤️ <a href="https://webhostingbaba.com" target="_blank" rel="noopener noreferrer" style="color: #FF0000; font-weight: bold; text-decoration: none;">HOSTING BABA</a></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

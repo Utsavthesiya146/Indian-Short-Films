@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>My Watchlist | Indian Short Movie</title>
+  <meta name="description" content="Your personal collection of saved Indian short films, independent cinema releases, and director highlights.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-cinema-bg text-white">
+
+  <!-- Sticky Transparent Glass Header matching reference exactly -->
+  <header class="sticky top-0 z-50 glass-panel" style="position: sticky; top: 0; z-index: 50; background: rgba(17, 19, 25, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(38, 42, 54, 0.5);">
+    <div class="header-container" style="max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; height: 80px; display: flex; align-items: center; justify-content: space-between;">
+      
+      <!-- Brand Logo (Unchanged) & Navigation -->
+      <div style="display: flex; align-items: center; gap: 2rem;">
+        <a href="index.html" style="display: flex; flex-direction: column; align-items: flex-start; text-decoration: none;">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-family: system-ui, sans-serif; font-weight: 900; font-size: 1.25rem; color: #ffffff; letter-spacing: -0.03em;">
+              <span style="position: relative; display: inline-block;">i<span style="position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; border-radius: 50%; background-color: #f84464;"></span></span>nd<span style="position: relative; display: inline-block;">i<span style="position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; border-radius: 50%; background-color: #f84464;"></span></span>an
+            </span>
+            <div style="transform: rotate(-2deg); display: inline-block;">
+              <svg viewBox="0 0 94 36" style="height: 24px; width: auto;" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="navTicketDark" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#f84464" />
+                    <stop offset="60%" stopColor="#dc2626" />
+                    <stop offset="100%" stopColor="#8b5cf6" />
+                  </linearGradient>
+                </defs>
+                <path d="M 6 0 L 39 0 A 6 6 0 0 1 55 0 L 88 0 C 91.3 0 94 2.7 94 6 L 94 30 C 94 33.3 89.3 36 88 36 L 55 36 A 6 6 0 0 1 39 36 L 6 36 C 2.7 36 0 33.3 0 30 L 0 6 C 0 2.7 2.7 0 6 0 Z" fill="url(#navTicketDark)" />
+                <text x="11" y="24" fill="#ffffff" fontFamily="system-ui, sans-serif" fontWeight="900" fontSize="16.5" letterSpacing="-0.6px">short</text>
+                <g transform="translate(64, 10)">
+                  <circle cx="8" cy="8" r="7.5" fill="#ffffff" />
+                  <polygon points="6.5,5 11.5,8 6.5,11" fill="#dc2626" />
+                </g>
+              </svg>
+            </div>
+            <span style="font-family: system-ui, sans-serif; font-weight: 900; font-size: 1.25rem; color: #ffffff; letter-spacing: -0.03em;">
+              mov<span style="position: relative; display: inline-block;">i<span style="position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; border-radius: 50%; background-color: #f84464;"></span></span>e
+            </span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.35rem; margin-top: 2px;">
+            <span style="width: 12px; height: 1px; background: rgba(229, 9, 20, 0.6);"></span>
+            <span style="font-size: 8px; font-weight: 700; letter-spacing: 0.2em; color: #9ca3af; text-transform: uppercase;">India's Stories on Screen</span>
+            <span style="width: 12px; height: 1px; background: rgba(229, 9, 20, 0.6);"></span>
+          </div>
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="nav-links" style="display: flex; align-items: center; gap: 1.5rem;">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="discover.html" class="nav-link">Discover</a>
+          <a href="watchlist.html" class="nav-link active" style="color: #ffffff; font-weight: 700;">Watchlist</a>
+          <a href="filmmakers.html" class="nav-link">Filmmakers</a>
+        </nav>
+      </div>
+
+      <!-- Right Actions -->
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <button class="btn-submit" onclick="alert('Submit Film screener portal active.')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffb703" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+          Submit Film
+        </button>
+
+        <a href="admin/index.html" class="btn-admin" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.5rem 0.75rem; border-radius: 0.75rem; border: 1px solid var(--cinema-border); background: var(--cinema-card); color: var(--cinema-accent); font-size: 0.75rem; font-weight: 600; text-decoration: none;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          Admin
+        </a>
+
+        <button class="btn-signin" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.5rem 0.85rem; border-radius: 0.75rem; border: 1px solid var(--cinema-border); background: var(--cinema-surface); color: #ffffff; font-size: 0.75rem; font-weight: 600; cursor: pointer;" onclick="alert('Sign In modal initialized.')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" x2="3" y1="12" y2="12"/></svg>
+          Sign In
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Watchlist Content -->
+  <main style="max-width: 1280px; margin: 0 auto; padding: 2.5rem 1.5rem; min-height: 80vh;">
+    
+    <div style="margin-bottom: 2rem;">
+      <h1 class="font-display" style="font-size: 2rem; font-weight: 900; color: #ffffff; letter-spacing: -0.02em;">
+        My Watchlist
+      </h1>
+      <p style="font-size: 0.875rem; color: var(--cinema-muted); margin-top: 0.25rem;">
+        Your bookmarked films and screeners saved for private viewing.
+      </p>
+    </div>
+
+    <div id="watchlist-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
+      <!-- Content populated via JavaScript -->
+    </div>
+
+  </main>
+
+  <!-- EXACT FOOTER -->
+  <footer class="site-footer" style="background-color: var(--cinema-surface); border-top: 1px solid var(--cinema-border); margin-top: 4rem; padding: 3rem 0 2rem;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 0 1.5rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+        <div>
+          <div style="font-weight: 900; font-size: 1.1rem; color: #ffffff; margin-bottom: 0.5rem;">INDIAN SHORT MOVIE</div>
+          <p style="font-size: 0.75rem; color: #8e95a5; line-height: 1.6;">
+            Dedicated platform celebrating independent storytelling, short cinema, and visionary filmmakers across all Indian languages.
+          </p>
+        </div>
+        <div>
+          <h4 style="font-size: 0.75rem; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">Discover</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.75rem; color: #8e95a5;">
+            <li><a href="discover.html" style="color: inherit; text-decoration: none;">Trending Now</a></li>
+            <li><a href="discover.html" style="color: inherit; text-decoration: none;">Top Rated</a></li>
+            <li><a href="discover.html" style="color: inherit; text-decoration: none;">Hindi Short Films</a></li>
+            <li><a href="discover.html" style="color: inherit; text-decoration: none;">Tamil Short Films</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-size: 0.75rem; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">Filmmakers</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.75rem; color: #8e95a5;">
+            <li><a href="#" onclick="alert('Submit Film screener portal active.')" style="color: inherit; text-decoration: none;">Submit Your Film</a></li>
+            <li><a href="filmmakers.html" style="color: inherit; text-decoration: none;">Filmmaker Directory</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-size: 0.75rem; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">Platform</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.75rem; color: #8e95a5;">
+            <li><a href="admin/index.html" style="color: inherit; text-decoration: none;">Admin Portal</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Exact Required Footer Text & Attribution -->
+      <div style="border-top: 1px solid rgba(38, 42, 54, 0.5); padding-top: 1.5rem;">
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: #8e95a5;">
+          <span>© 2026 Indian Short Films. All rights reserved.</span>
+          <span>With love ❤️ <a href="https://webhostingbaba.com" target="_blank" rel="noopener noreferrer" style="color: #FF0000; font-weight: bold; text-decoration: none;">HOSTING BABA</a></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script>
+    function renderWatchlist() {
+      const container = document.getElementById('watchlist-container');
+      let saved = JSON.parse(localStorage.getItem('ism_watchlist') || '["film-1", "film-2"]');
+      const savedFilms = DEFAULT_FILMS.filter(f => saved.includes(f.id));
+
+      if (savedFilms.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1/-1; background: #111319; border: 1px dashed #262a36; border-radius: 1.5rem; padding: 4rem 1.5rem; text-align: center;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#8e95a5" stroke-width="1.5" style="margin: 0 auto 1rem; opacity: 0.6;"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            <h3 style="font-weight: 700; font-size: 1.1rem; color: #ffffff;">Your Watchlist is Empty</h3>
+            <p style="font-size: 0.8rem; color: #8e95a5; max-width: 380px; margin: 0.5rem auto 1.5rem;">Browse our curated catalog to bookmark Indian short films and watch them anytime.</p>
+            <a href="discover.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1.25rem; background: #e50914; color: #ffffff; border-radius: 0.75rem; font-size: 0.8rem; font-weight: 700; text-decoration: none;">
+              Explore Discover Catalog
+            </a>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = savedFilms.map(f => `
+        <div style="background: #181b24; border: 1px solid #262a36; border-radius: 1.25rem; overflow: hidden; display: flex; flex-direction: column;">
+          <div style="position: relative; width: 100%; aspect-ratio: 16/9; background: #000;">
+            <img src="${f.posterUrl}" alt="${f.title}" style="width: 100%; height: 100%; object-fit: cover;">
+            <div style="position: absolute; bottom: 0.5rem; right: 0.5rem; background: rgba(0,0,0,0.7); padding: 0.15rem 0.5rem; border-radius: 0.35rem; font-size: 0.7rem; font-weight: 700;">
+              ${f.duration}
+            </div>
+          </div>
+          <div style="padding: 1.25rem; display: flex; flex-direction: column; flex: 1;">
+            <span style="font-size: 0.7rem; color: #66fcf1; font-weight: 600;">${f.language} • ${f.genre}</span>
+            <h3 style="font-weight: 700; font-size: 1rem; color: #ffffff; margin-top: 0.35rem;">${f.title}</h3>
+            <p style="font-size: 0.75rem; color: #8e95a5; margin-top: 0.25rem;">Dir. ${f.director}</p>
+            <p style="font-size: 0.75rem; color: #8e95a5; margin-top: 0.5rem; line-height: 1.5; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${f.synopsis}</p>
+            <div style="margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid rgba(38,42,54,0.5); display: flex; align-items: center; justify-content: space-between;">
+              <button onclick="removeFromWatchlist('${f.id}')" style="background: transparent; border: none; color: #ef4444; font-size: 0.75rem; font-weight: 600; cursor: pointer;">Remove</button>
+              <a href="discover.html" style="color: #ffffff; background: #e50914; padding: 0.4rem 0.85rem; border-radius: 0.5rem; font-size: 0.75rem; font-weight: 700; text-decoration: none;">Watch</a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function removeFromWatchlist(id) {
+      let saved = JSON.parse(localStorage.getItem('ism_watchlist') || '["film-1", "film-2"]');
+      saved = saved.filter(item => item !== id);
+      localStorage.setItem('ism_watchlist', JSON.stringify(saved));
+      renderWatchlist();
+    }
+
+    renderWatchlist();
+  </script>
+</body>
+</html>

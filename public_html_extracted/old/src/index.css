@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-outfit: 'Outfit', sans-serif;
+    --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
+
+    /* Reference Colors from https://indian-short-films-lime.vercel.app/admin */
+    --cinema-bg: #07080b;
+    --cinema-surface: #111319;
+    --cinema-card: #181b24;
+    --cinema-border: #262a36;
+    --cinema-accent: #e50914;
+    --cinema-accent-hover: #b80710;
+    --cinema-gold: #ffb703;
+    --cinema-teal: #66fcf1;
+    --cinema-muted: #8e95a5;
+  }
+
+  body {
+    font-family: var(--font-inter);
+    overflow-x: hidden;
+    background-color: #07080b;
+    color: #ffffff;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-outfit);
+  }
+}
+
+/* Reference Exact Utility Classes */
+.bg-cinema-bg { background-color: #07080b !important; }
+.bg-cinema-surface { background-color: #111319 !important; }
+.bg-cinema-card { background-color: #181b24 !important; }
+.border-cinema-border { border-color: #262a36 !important; }
+.bg-cinema-accent { background-color: #e50914 !important; }
+.hover\:bg-cinema-accentHover:hover { background-color: #b80710 !important; }
+.text-cinema-accent { color: #e50914 !important; }
+.border-cinema-accent { border-color: #e50914 !important; }
+.text-cinema-gold { color: #ffb703 !important; }
+.bg-cinema-gold { background-color: #ffb703 !important; }
+.border-cinema-gold { border-color: rgba(255, 183, 3, 0.3) !important; }
+.text-cinema-teal { color: #66fcf1 !important; }
+.bg-cinema-teal { background-color: #66fcf1 !important; }
+.border-cinema-teal { border-color: rgba(102, 252, 241, 0.3) !important; }
+.text-cinema-muted { color: #8e95a5 !important; }
+.font-display { font-family: 'Outfit', sans-serif !important; }
+
+/* Glass Panel Header Matching Reference */
+.glass-panel {
+  background: rgba(17, 19, 25, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #07080b;
+}
+::-webkit-scrollbar-thumb {
+  background: #262a36;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e50914;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Vertical video snap scroll */
+.reels-container {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.reel-item {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Animations */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+.animate-float {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: pulseGlow 6s ease-in-out infinite;
+}

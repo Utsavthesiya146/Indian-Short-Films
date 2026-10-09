@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Discover Indian Short Films | Indian Short Movie</title>
+  <meta name="description" content="Explore premier award-winning short films, independent cinema, and regional storytelling across India.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .filter-chip {
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: 1px solid var(--cinema-border);
+      background-color: var(--cinema-surface);
+      color: var(--cinema-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-chip:hover, .filter-chip.active {
+      background-color: var(--cinema-accent);
+      color: #ffffff;
+      border-color: var(--cinema-accent);
+      box-shadow: 0 4px 12px rgba(229, 9, 20, 0.3);
+    }
+    .film-card {
+      background: var(--cinema-card);
+      border: 1px solid var(--cinema-border);
+      border-radius: 1.25rem;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    .film-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(229, 9, 20, 0.4);
+      box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.6);
+    }
+    .film-thumbnail-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #0f1117;
+      overflow: hidden;
+    }
+    .film-thumbnail {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .film-card:hover .film-thumbnail {
+      transform: scale(1.05);
+    }
+    .play-badge-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .film-card:hover .play-badge-overlay {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body class="bg-cinema-bg text-white">
+
+  <!-- Sticky Transparent Glass Header matching reference exactly -->
+  <header class="sticky top-0 z-50 glass-panel" style="position: sticky; top: 0; z-index: 50; background: rgba(17, 19, 25, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(38, 42, 54, 0.5);">
+    <div class="header-container" style="max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; height: 80px; display: flex; align-items: center; justify-content: space-between;">
+      
+      <!-- Brand Logo (Unchanged) & Navigation -->
+      <div style="display: flex; align-items: center; gap: 2rem;">
+        <a href="index.html" style="display: flex; flex-direction: column; align-items: flex-start; text-decoration: none;">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-family: system-ui, sans-serif; font-weight: 900; font-size: 1.25rem; color: #ffffff; letter-spacing: -0.03em;">
+              <span style="position: relative; display: inline-block;">i<span style="position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; border-radius: 50%; background-color: #f84464;"></span></span>nd<span style="position: relative; display: inline-block;">i<span style="position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; border-radius: 50%; background-color: #f84464;"></span></span>an
+            </span>
+            <div style="transform: rotate(-2deg); display: inline-block;">
+              <svg viewBox="0 0 94 36" style="height: 24px; width: auto;" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="navTicketDark" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#f84464" />
+                    <stop offset="60%" stopColor="#dc2626" />
+                    <stop offset="100%" stopColor="#8b5cf6" />
+                  </linearGradient>
+                </defs>
+                <path d="M 6 0 L 39 0 A 6 6 0 0 1 55 0 L 88 0 C 91.3 0 94 2.7 94 6 L 94 30 C 94 33.3 89.3 36 88 36 L 55 36 A 6 6 0 0 1 39 36 L 6 36 C 2.7 36 0 33.3 0 30 L 0 6 C 0 2.7 2.7 0 6 0 Z" fill="url(#navTicketDark)" />
+                <text x="11" y="24" fill="#ffffff" fontFamily="system-ui, sans-serif" fontWeight="900" fontSize="16.5" letterSpacing="-0.6px">short</text>
+                <g transform="translate(64, 10)">
+                  <circle cx="8" cy="8" r="7.5" fill="#ffffff" />
+                  <polygon points="6.5,5 11.5,8 6.5,11" fill="#dc2626" />
+                </g>
+              </svg>
+            </div>
+            <span style="font-family: system-ui, sans-serif; font-weight: 900; font-size: 1.25rem; color: #ffffff; letter-spacing: -0.03em;">
+              mov<span style="position: relative; display: inline-block;">i<span style="position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 6px; height: 6px; border-radius: 50%; background-color: #f84464;"></span></span>e
+            </span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 0.35rem; margin-top: 2px;">
+            <span style="width: 12px; height: 1px; background: rgba(229, 9, 20, 0.6);"></span>
+            <span style="font-size: 8px; font-weight: 700; letter-spacing: 0.2em; color: #9ca3af; text-transform: uppercase;">India's Stories on Screen</span>
+            <span style="width: 12px; height: 1px; background: rgba(229, 9, 20, 0.6);"></span>
+          </div>
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="nav-links" style="display: flex; align-items: center; gap: 1.5rem;">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="discover.html" class="nav-link active" style="color: #ffffff; font-weight: 700;">Discover</a>
+          <a href="watchlist.html" class="nav-link">Watchlist</a>
+          <a href="filmmakers.html" class="nav-link">Filmmakers</a>
+        </nav>
+      </div>
+
+      <!-- Right Actions -->
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <button class="btn-submit" onclick="alert('Submit Film portal: Upload your screener link, synopsis, and crew credits.')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffb703" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+          Submit Film
+        </button>
+
+        <a href="admin/index.html" class="btn-admin" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.5rem 0.75rem; border-radius: 0.75rem; border: 1px solid var(--cinema-border); background: var(--cinema-card); color: var(--cinema-accent); font-size: 0.75rem; font-weight: 600; text-decoration: none;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          Admin
+        </a>
+
+        <button class="btn-signin" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.5rem 0.85rem; border-radius: 0.75rem; border: 1px solid var(--cinema-border); background: var(--cinema-surface); color: #ffffff; font-size: 0.75rem; font-weight: 600; cursor: pointer;" onclick="alert('Sign In modal initialized.')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" x2="3" y1="12" y2="12"/></svg>
+          Sign In
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Catalog Content -->
+  <main style="max-width: 1280px; margin: 0 auto; padding: 2.5rem 1.5rem; min-height: 80vh;">
+    
+    <!-- Header -->
+    <div style="margin-bottom: 2rem; display: flex; flex-direction: column; md:flex-row; justify-content: space-between; gap: 1.5rem;">
+      <div>
+        <h1 class="font-display" style="font-size: 2rem; font-weight: 900; color: #ffffff; letter-spacing: -0.02em;">
+          Discover Indian Short Films
+        </h1>
+        <p style="font-size: 0.875rem; color: var(--cinema-muted); margin-top: 0.25rem;">
+          Explore festival selections, regional narratives, and independent cinematic gems.
+        </p>
+      </div>
+
+      <!-- Search Input -->
+      <div style="position: relative; max-width: 320px; width: 100%;">
+        <input 
+          type="text" 
+          id="catalog-search" 
+          placeholder="Search by title, director, or story..." 
+          style="width: 100%; padding: 0.625rem 1rem 0.625rem 2.5rem; border-radius: 0.75rem; background: var(--cinema-surface); border: 1px solid var(--cinema-border); color: #ffffff; font-size: 0.75rem; outline: none;"
+          oninput="filterCatalog()"
+        >
+        <svg style="position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--cinema-muted);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Language Filter Chips -->
+    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;">
+      <button class="filter-chip active" onclick="selectLanguage('All', this)">All Languages</button>
+      <button class="filter-chip" onclick="selectLanguage('Hindi', this)">Hindi (हिन्दी)</button>
+      <button class="filter-chip" onclick="selectLanguage('Kannada', this)">Kannada (ಕನ್ನಡ)</button>
+      <button class="filter-chip" onclick="selectLanguage('Tamil', this)">Tamil (தமிழ்)</button>
+      <button class="filter-chip" onclick="selectLanguage('Malayalam', this)">Malayalam (മലയാളം)</button>
+      <button class="filter-chip" onclick="selectLanguage('Telugu', this)">Telugu (తెలుగు)</button>
+      <button class="filter-chip" onclick="selectLanguage('Gujarati', this)">Gujarati (ગુજરાતી)</button>
+      <button class="filter-chip" onclick="selectLanguage('Bengali', this)">Bengali (বাংলা)</button>
+    </div>
+
+    <!-- Films Grid -->
+    <div id="films-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
+      <!-- Generated via JS -->
+    </div>
+
+  </main>
+
+  <!-- Video Modal -->
+  <div id="video-modal" style="display: none; position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 1.5rem;">
+    <div style="background: #111319; border: 1px solid #262a36; border-radius: 1.5rem; max-width: 900px; width: 100%; overflow: hidden; position: relative;">
+      <button onclick="closeVideoModal()" style="position: absolute; top: 1rem; right: 1rem; z-index: 10; background: rgba(0,0,0,0.6); border: 1px solid #262a36; color: #ffffff; border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+        ✕
+      </button>
+      <div style="position: relative; aspect-ratio: 16/9; background: #000;">
+        <video id="modal-video-player" controls autoplay style="width: 100%; height: 100%; object-fit: contain;"></video>
+      </div>
+      <div style="padding: 1.5rem;">
+        <h3 id="modal-film-title" style="font-size: 1.25rem; font-weight: 800; color: #ffffff;"></h3>
+        <p id="modal-film-desc" style="font-size: 0.8rem; color: #8e95a5; margin-top: 0.5rem;"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXACT FOOTER -->
+  <footer class="site-footer" style="background-color: var(--cinema-surface); border-top: 1px solid var(--cinema-border); margin-top: 4rem; padding: 3rem 0 2rem;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 0 1.5rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+        <div>
+          <div style="font-weight: 900; font-size: 1.1rem; color: #ffffff; margin-bottom: 0.5rem;">INDIAN SHORT MOVIE</div>
+          <p style="font-size: 0.75rem; color: #8e95a5; line-height: 1.6;">
+            Dedicated platform celebrating independent storytelling, short cinema, and visionary filmmakers across all Indian languages.
+          </p>
+        </div>
+        <div>
+          <h4 style="font-size: 0.75rem; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">Discover</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.75rem; color: #8e95a5;">
+            <li><a href="discover.html" style="color: inherit; text-decoration: none;">Trending Now</a></li>
+            <li><a href="discover.html" style="color: inherit; text-decoration: none;">Top Rated</a></li>
+            <li><a href="discover.html" style="color: inherit; text-decoration: none;">Hindi Short Films</a></li>
+            <li><a href="discover.html" style="color: inherit; text-decoration: none;">Tamil Short Films</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-size: 0.75rem; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">Filmmakers</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.75rem; color: #8e95a5;">
+            <li><a href="#" onclick="alert('Submit Film screener portal active.')" style="color: inherit; text-decoration: none;">Submit Your Film</a></li>
+            <li><a href="filmmakers.html" style="color: inherit; text-decoration: none;">Filmmaker Directory</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-size: 0.75rem; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">Platform</h4>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.75rem; color: #8e95a5;">
+            <li><a href="admin/index.html" style="color: inherit; text-decoration: none;">Admin Portal</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Exact Required Footer Text & Attribution -->
+      <div style="border-top: 1px solid rgba(38, 42, 54, 0.5); padding-top: 1.5rem;">
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: #8e95a5;">
+          <span>© 2026 Indian Short Films. All rights reserved.</span>
+          <span>With love ❤️ <a href="https://webhostingbaba.com" target="_blank" rel="noopener noreferrer" style="color: #FF0000; font-weight: bold; text-decoration: none;">HOSTING BABA</a></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script>
+    let activeLanguage = 'All';
+
+    function selectLanguage(lang, btn) {
+      activeLanguage = lang;
+      document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      filterCatalog();
+    }
+
+    function filterCatalog() {
+      const q = (document.getElementById('catalog-search').value || '').toLowerCase();
+      const filtered = DEFAULT_FILMS.filter(f => {
+        const matchesLang = activeLanguage === 'All' || f.language.toLowerCase().includes(activeLanguage.toLowerCase());
+        const matchesQuery = !q || f.title.toLowerCase().includes(q) || f.director.toLowerCase().includes(q) || f.synopsis.toLowerCase().includes(q);
+        return matchesLang && matchesQuery;
+      });
+      renderFilms(filtered);
+    }
+
+    function renderFilms(list) {
+      const container = document.getElementById('films-grid');
+      if (list.length === 0) {
+        container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 4rem 1rem; color: #8e95a5;">No films found matching your search.</div>`;
+        return;
+      }
+      container.innerHTML = list.map(f => `
+        <div class="film-card">
+          <div class="film-thumbnail-wrapper" onclick="playFilm('${f.id}')" style="cursor: pointer;">
+            <img src="${f.posterUrl}" alt="${f.title}" class="film-thumbnail" loading="lazy">
+            <div class="play-badge-overlay">
+              <div style="width: 48px; height: 48px; border-radius: 50%; background: #e50914; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(229, 9, 20, 0.5);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#ffffff"><polygon points="6,4 20,12 6,20"/></svg>
+              </div>
+            </div>
+            <div style="position: absolute; bottom: 0.5rem; right: 0.5rem; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); padding: 0.15rem 0.5rem; border-radius: 0.35rem; font-size: 0.7rem; font-weight: 700; color: #ffffff;">
+              ${f.duration}
+            </div>
+            <div style="position: absolute; top: 0.5rem; left: 0.5rem; background: rgba(17,19,25,0.8); border: 1px solid rgba(38,42,54,0.6); padding: 0.15rem 0.5rem; border-radius: 0.35rem; font-size: 0.65rem; font-weight: 700; color: #ffb703;">
+              ★ ${f.rating}
+            </div>
+          </div>
+          <div style="padding: 1.25rem; display: flex; flex-direction: column; flex: 1;">
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;">
+              <span style="font-size: 0.7rem; color: #66fcf1; font-weight: 600;">${f.language} • ${f.genre}</span>
+              <button onclick="toggleWatchlist('${f.id}')" style="background: transparent; border: none; color: #8e95a5; cursor: pointer; padding: 2px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+              </button>
+            </div>
+            <h3 style="font-weight: 700; font-size: 1rem; color: #ffffff; margin-top: 0.35rem; line-height: 1.3;">
+              ${f.title}
+            </h3>
+            <p style="font-size: 0.75rem; color: #8e95a5; margin-top: 0.25rem;">
+              Dir. ${f.director}
+            </p>
+            <p style="font-size: 0.75rem; color: #8e95a5; margin-top: 0.75rem; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; flex: 1;">
+              ${f.synopsis}
+            </p>
+            <div style="margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid rgba(38,42,54,0.5); display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-size: 0.7rem; color: #8e95a5;">${(f.viewsCount || 0).toLocaleString()} views</span>
+              <button onclick="playFilm('${f.id}')" style="background: transparent; border: none; color: #e50914; font-size: 0.75rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 0.25rem;">
+                Watch Now →
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function playFilm(filmId) {
+      const film = DEFAULT_FILMS.find(f => f.id === filmId);
+      if (!film) return;
+      document.getElementById('modal-film-title').textContent = film.title + ' (' + film.language + ')';
+      document.getElementById('modal-film-desc').textContent = film.synopsis;
+      const v = document.getElementById('modal-video-player');
+      v.src = film.videoUrl;
+      v.play();
+      document.getElementById('video-modal').style.display = 'flex';
+    }
+
+    function closeVideoModal() {
+      const v = document.getElementById('modal-video-player');
+      v.pause();
+      v.src = '';
+      document.getElementById('video-modal').style.display = 'none';
+    }
+
+    function toggleWatchlist(filmId) {
+      let saved = JSON.parse(localStorage.getItem('ism_watchlist') || '[]');
+      if (saved.includes(filmId)) {
+        saved = saved.filter(id => id !== filmId);
+        alert('Removed from your watchlist.');
+      } else {
+        saved.push(filmId);
+        alert('Added to your watchlist!');
+      }
+      localStorage.setItem('ism_watchlist', JSON.stringify(saved));
+    }
+
+    // Initial render
+    filterCatalog();
+  </script>
+</body>
+</html>

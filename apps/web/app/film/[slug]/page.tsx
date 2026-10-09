@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { getFilmBySlug } from '@/lib/supabase';
+import { getFilmBySlug } from '@/lib/db';
 import { VideoPlayer } from '@/components/VideoPlayer';
 import { ReviewSection } from '@/components/ReviewSection';
 import { CommentSection } from '@/components/CommentSection';

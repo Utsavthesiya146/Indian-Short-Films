@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { RatingStars } from './RatingStars';
 import { ThumbsUp, Flag, MessageSquare, Send, CheckCircle2, AlertCircle, LogIn } from 'lucide-react';
-import { getFilmReviews, createReview, submitRating, createReport, getCurrentSession } from '@/lib/supabase';
+import { getFilmReviews, createReview, submitRating, createReport, getCurrentSession } from '@/lib/db';
 import { Review } from '@/types';
 
 interface ReviewSectionProps {

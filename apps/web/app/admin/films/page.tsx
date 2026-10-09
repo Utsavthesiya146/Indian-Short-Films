@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { getFilms } from '@/lib/supabase';
+import { getFilms } from '@/lib/db';
 import { Film } from '@/types';
 import { Star, Flame, Sparkles, Check, Trash2, Eye, Edit3, ShieldAlert } from 'lucide-react';
 

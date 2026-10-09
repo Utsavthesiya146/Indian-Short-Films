@@ -1,0 +1,65 @@
+HOSTINGER DEPLOYMENT GUIDE (cPanel / VPS / Node.js)
+===================================================
+
+This guide explains how to deploy the Indian Short Films Next.js application to Hostinger.
+
+Because this application uses Next.js server-side rendering, API routes, and Supabase server components, it CANNOT be deployed as a static HTML site. You must deploy it using a Node.js hosting environment.
+
+PREREQUISITES:
+-------------
+- A Hostinger plan that supports Node.js (e.g., VPS hosting, or advanced Shared/Cloud hosting with Node.js support).
+- Node.js version 18.x or 20.x installed.
+- Your Supabase Project URL and Anon Key.
+
+DEPLOYMENT STEPS:
+-----------------
+
+1. LOGIN TO HOSTINGER
+   - Go to hPanel (Hostinger Panel) and log in.
+
+2. PREPARE THE HOSTING ENVIRONMENT
+   - Navigate to your Website/Hosting dashboard.
+   - If using cPanel/Shared Node.js app: Go to "Setup Node.js App" in the advanced section.
+   - If using VPS: SSH into your server.
+
+3. UPLOAD THE FILES
+   - Open File Manager (or use FTP/SFTP).
+   - Upload the `Indian-Short-Films-Hostinger-Production.zip` file to your server's root directory (or your Node.js app folder, e.g., `public_html` or `/var/www/indianshortmovies`).
+   - Extract the contents of the ZIP file.
+
+4. ENVIRONMENT VARIABLES (.env)
+   - In the folder where you extracted the files, locate or create a file named exactly `.env`.
+   - Add your production Supabase keys (found in your Supabase dashboard under Project Settings -> API):
+     NEXT_PUBLIC_SUPABASE_URL=your-actual-supabase-url
+     NEXT_PUBLIC_SUPABASE_ANON_KEY=your-actual-supabase-anon-key
+
+5. INSTALL DEPENDENCIES
+   - Open the terminal/SSH in Hostinger (or use the Node.js App Manager interface).
+   - Navigate to the folder where you extracted the files.
+   - Run the following command to install the required Node.js packages:
+     npm install
+
+6. BUILD THE APPLICATION
+   - Run the production build command:
+     npm run build
+   - (This creates the highly optimized production server files in the `.next` directory).
+
+7. START THE SERVER
+   - Once the build is successful, start the production server:
+     npm run start
+   - If using Hostinger's "Setup Node.js App", you may need to specify `npm run start` as the startup command and restart the application from the hPanel dashboard.
+   - If using a VPS, use a process manager like PM2 to keep it running:
+     pm2 start npm --name "indian-short-films" -- run start
+
+8. CONFIGURE DOMAIN & SSL
+   - Ensure your domain (indianshortmovies.com) is pointed to your Hostinger server IP.
+   - Enable SSL (HTTPS) from the Hostinger dashboard (usually a one-click Let's Encrypt installation).
+   - If using a VPS with Nginx or Apache, ensure you proxy requests to the port Next.js is running on (default is 3000).
+
+9. FINAL TEST
+   - Visit https://indianshortmovies.com
+   - Test the Watch Now buttons, video playback, and authentication to ensure Supabase connects successfully.
+
+TROUBLESHOOTING:
+- If the site shows 500 errors or fails to load data, ensure your `.env` file is present and correct.
+- If images are not loading, ensure your Hostinger server allows outbound connections to `images.unsplash.com` and `*.supabase.co`.

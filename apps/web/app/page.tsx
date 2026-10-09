@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { getFeaturedFilms, getTrendingFilms, getFilms, getLanguages, getGenres } from '@/lib/supabase';
+import { getFeaturedFilms, getTrendingFilms, getFilms, getLanguages, getGenres } from '@/lib/db';
 import { HeroBanner } from '@/components/HeroBanner';
 import { FilmRow } from '@/components/FilmRow';
 import { Flame, Star, Sparkles, Languages, Grid, ArrowRight } from 'lucide-react';

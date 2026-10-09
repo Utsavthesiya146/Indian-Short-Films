@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { getFilms } from '@/lib/supabase';
+import { getFilms } from '@/lib/db';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://indianshortfilms.com';

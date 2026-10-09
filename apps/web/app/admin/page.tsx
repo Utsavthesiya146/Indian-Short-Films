@@ -1,5 +1,5 @@
 import React from 'react';
-import { getAdminStats } from '@/lib/supabase';
+import { getAdminStats } from '@/lib/db';
 import { Users, Film, FileCheck, Eye, MessageSquare, ShieldAlert, TrendingUp, Award, Layers } from 'lucide-react';
 
 export default async function AdminDashboardPage() {

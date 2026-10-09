@@ -1,0 +1,222 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Profile {
+  id         String   @id @default(uuid())
+  full_name  String
+  username   String   @unique
+  email      String   @unique
+  password   String
+  avatar_url String?
+  bio        String?
+  location   String?
+  languages  String? // Storing array as JSON string
+  role       String   @default("user") // 'user' | 'filmmaker' | 'admin' | 'moderator'
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  filmmaker    Filmmaker?
+  watchlists   Watchlist[]
+  watchHistory WatchHistory[]
+  ratings      Rating[]
+  reviews      Review[]
+  comments     Comment[]
+  reports      Report[]
+}
+
+model Language {
+  id          String   @id @default(uuid())
+  name        String
+  code        String
+  native_name String
+  created_at  DateTime @default(now())
+  films       Film[]
+}
+
+model Genre {
+  id          String   @id @default(uuid())
+  name        String
+  slug        String   @unique
+  description String?
+  icon        String?
+  created_at  DateTime @default(now())
+  films       Film[]
+}
+
+model Filmmaker {
+  id              String   @id @default(uuid())
+  profile_id      String   @unique
+  profile         Profile  @relation(fields: [profile_id], references: [id], onDelete: Cascade)
+  bio             String?
+  location        String?
+  social_links    String? // JSON string
+  awards          String? // JSON string
+  followers_count Int      @default(0)
+  total_views     Int      @default(0)
+  is_verified     Boolean  @default(false)
+  created_at      DateTime @default(now())
+  
+  films       Film[]
+  submissions Submission[]
+}
+
+model Film {
+  id               String   @id @default(uuid())
+  title            String
+  slug             String   @unique
+  description      String   @db.Text
+  poster_url       String
+  banner_url       String?
+  video_url        String
+  trailer_url      String?
+  duration_seconds Int
+  release_year     Int
+  certificate      String
+  director         String
+  producer         String?
+  cast_members     String?  // JSON string
+  production_house String?
+  status           String   @default("draft") // 'draft' | 'pending_review' | 'approved' | 'rejected' | 'archived'
+  visibility       String   @default("public") // 'public' | 'private' | 'unlisted'
+  views_count      Int      @default(0)
+  likes_count      Int      @default(0)
+  rating_average   Float    @default(0)
+  rating_count     Int      @default(0)
+  filmmaker_id     String?
+  filmmaker        Filmmaker? @relation(fields: [filmmaker_id], references: [id], onDelete: SetNull)
+  rejection_reason String?  @db.Text
+  created_at       DateTime @default(now())
+  updated_at       DateTime @updatedAt
+  published_at     DateTime?
+
+  languages Language[]
+  genres    Genre[]
+
+  watchlists   Watchlist[]
+  watchHistory WatchHistory[]
+  ratings      Rating[]
+  reviews      Review[]
+  comments     Comment[]
+  film_likes   FilmLike[]
+}
+
+model Watchlist {
+  id         String   @id @default(uuid())
+  user_id    String
+  user       Profile  @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  film_id    String
+  film       Film     @relation(fields: [film_id], references: [id], onDelete: Cascade)
+  created_at DateTime @default(now())
+
+  @@unique([user_id, film_id])
+}
+
+model WatchHistory {
+  id                    String   @id @default(uuid())
+  user_id               String
+  user                  Profile  @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  film_id               String
+  film                  Film     @relation(fields: [film_id], references: [id], onDelete: Cascade)
+  last_position_seconds Int
+  duration_seconds      Int
+  completion_percentage Float
+  updated_at            DateTime @default(now()) @updatedAt
+
+  @@unique([user_id, film_id])
+}
+
+model Rating {
+  id         String   @id @default(uuid())
+  user_id    String
+  user       Profile  @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  film_id    String
+  film       Film     @relation(fields: [film_id], references: [id], onDelete: Cascade)
+  stars      Int
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@unique([user_id, film_id])
+}
+
+model Review {
+  id          String   @id @default(uuid())
+  user_id     String
+  user        Profile  @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  film_id     String
+  film        Film     @relation(fields: [film_id], references: [id], onDelete: Cascade)
+  content     String   @db.Text
+  rating_id   String?
+  stars       Int?
+  likes_count Int      @default(0)
+  status      String   @default("published")
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+}
+
+model Comment {
+  id         String   @id @default(uuid())
+  film_id    String
+  film       Film     @relation(fields: [film_id], references: [id], onDelete: Cascade)
+  user_id    String
+  user       Profile  @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  parent_id  String?
+  content    String   @db.Text
+  status     String   @default("published")
+  created_at DateTime @default(now())
+}
+
+model FilmLike {
+  id         String   @id @default(uuid())
+  user_id    String
+  film_id    String
+  film       Film     @relation(fields: [film_id], references: [id], onDelete: Cascade)
+  created_at DateTime @default(now())
+
+  @@unique([user_id, film_id])
+}
+
+model Submission {
+  id               String   @id @default(uuid())
+  filmmaker_id     String
+  filmmaker        Filmmaker @relation(fields: [filmmaker_id], references: [id], onDelete: Cascade)
+  film_id          String?
+  title            String
+  description      String   @db.Text
+  poster_url       String
+  banner_url       String?
+  video_url        String
+  trailer_url      String?
+  language_id      String?
+  genre_ids        String?  // JSON string
+  duration_seconds Int
+  release_year     Int
+  director         String
+  producer         String?
+  cast_members     String?  // JSON string
+  production_house String?
+  certificate      String?
+  content_warning  String?
+  status           String   @default("submitted")
+  rejection_reason String?  @db.Text
+  created_at       DateTime @default(now())
+  updated_at       DateTime @updatedAt
+}
+
+model Report {
+  id          String   @id @default(uuid())
+  reporter_id String
+  reporter    Profile  @relation(fields: [reporter_id], references: [id], onDelete: Cascade)
+  target_type String
+  target_id   String
+  reason      String
+  details     String?  @db.Text
+  status      String   @default("pending")
+  resolved_by String?
+  created_at  DateTime @default(now())
+}

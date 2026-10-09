@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/services/api_service.dart';
 
 class SubmitFilmScreen extends StatefulWidget {
   const SubmitFilmScreen({super.key});
@@ -16,7 +17,10 @@ class _SubmitFilmScreenState extends State<SubmitFilmScreen> {
   final _videoUrlController = TextEditingController();
   final _posterUrlController = TextEditingController();
 
+  final ApiService _apiService = ApiService();
   bool _submitted = false;
+  bool _isSubmitting = false;
+  String? _errorMessage;
 
   @override
   void dispose() {
@@ -94,22 +98,61 @@ class _SubmitFilmScreenState extends State<SubmitFilmScreen> {
 
                     const SizedBox(height: 24),
 
+                    if (_errorMessage != null)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 16.0),
+                        child: Text(_errorMessage!, style: const TextStyle(color: Colors.redAccent)),
+                      ),
                     SizedBox(
                       width: double.infinity,
                       height: 48,
                       child: ElevatedButton.icon(
-                        onPressed: () {
-                          if (_formKey.currentState?.validate() ?? false) {
-                            setState(() => _submitted = true);
-                          }
-                        },
+                        onPressed: _isSubmitting
+                            ? null
+                            : () async {
+                                if (_formKey.currentState?.validate() ?? false) {
+                                  setState(() {
+                                    _isSubmitting = true;
+                                    _errorMessage = null;
+                                  });
+                                  try {
+                                    await _apiService.submitFilm(
+                                      title: _titleController.text,
+                                      director: _directorController.text,
+                                      description: _descriptionController.text,
+                                      videoUrl: _videoUrlController.text,
+                                      posterUrl: _posterUrlController.text,
+                                    );
+                                    if (mounted) {
+                                      setState(() {
+                                        _submitted = true;
+                                      });
+                                    }
+                                  } catch (e) {
+                                    if (mounted) {
+                                      setState(() {
+                                        _errorMessage = e.toString().replaceAll('Exception: ', '');
+                                      });
+                                    }
+                                  } finally {
+                                    if (mounted) {
+                                      setState(() => _isSubmitting = false);
+                                    }
+                                  }
+                                }
+                              },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.accent,
                           foregroundColor: Colors.white,
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
                         ),
-                        icon: const Icon(Icons.cloud_upload_rounded),
-                        label: const Text('Submit Film for Review', style: TextStyle(fontWeight: FontWeight.bold)),
+                        icon: _isSubmitting
+                            ? const SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
+                            : const Icon(Icons.cloud_upload_rounded),
+                        label: Text(
+                          _isSubmitting ? 'Submitting...' : 'Submit Film for Review',
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                   ],

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Film, UserPlus, Mail, Lock, User, AlertCircle, Loader2 } from 'lucide-react';
-import { signUpUser } from '@/lib/supabase';
+
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -23,7 +23,18 @@ export default function RegisterPage() {
     setSuccessMsg(null);
 
     try {
-      await signUpUser({ email, password, fullName, username: username || undefined });
+      const res = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password, fullName, username: username || undefined })
+      });
+      
+      const data = await res.json();
+      
+      if (!res.ok) {
+        throw new Error(data.error || 'Registration failed');
+      }
+
       setSuccessMsg('Account created successfully! Redirecting to login...');
       setTimeout(() => {
         router.push('/login');

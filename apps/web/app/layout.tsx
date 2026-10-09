@@ -3,6 +3,7 @@ import './globals.css';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { VideoModalProvider } from '@/context/VideoModalContext';
+import { NextAuthProvider } from '@/context/NextAuthProvider';
 
 export const metadata: Metadata = {
   title: 'Indian Short Movie | Premier Indian Cinema, Short Films & Reels',
@@ -36,13 +37,15 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet" />
       </head>
       <body className="bg-cinema-bg text-gray-100 flex flex-col min-h-screen antialiased selection:bg-cinema-accent selection:text-white">
-        <VideoModalProvider>
-          <Navbar />
-          <main className="flex-grow">
-            {children}
-          </main>
-          <Footer />
-        </VideoModalProvider>
+        <NextAuthProvider>
+          <VideoModalProvider>
+            <Navbar />
+            <main className="flex-grow">
+              {children}
+            </main>
+            <Footer />
+          </VideoModalProvider>
+        </NextAuthProvider>
       </body>
     </html>
   );

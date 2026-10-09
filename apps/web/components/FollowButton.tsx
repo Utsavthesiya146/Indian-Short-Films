@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { UserPlus, UserCheck, Loader2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { toggleFollowFilmmaker, checkUserFollowsFilmmaker } from '@/lib/supabase';
+import { toggleFollowFilmmaker, checkUserFollowsFilmmaker } from '@/lib/db';
 
 interface FollowButtonProps {
   directorName: string;

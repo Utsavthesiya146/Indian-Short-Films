@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Submission } from '@/types';
-import { getAllSubmissions, updateSubmissionStatus } from '@/lib/supabase';
+import { getAllSubmissions, updateSubmissionStatus } from '@/lib/db';
 import { CheckCircle2, XCircle, AlertCircle, Play, Eye, Loader2 } from 'lucide-react';
 
 export default function AdminSubmissionsPage() {

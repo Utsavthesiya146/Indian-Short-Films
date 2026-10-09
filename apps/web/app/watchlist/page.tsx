@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getUserWatchlist, getUserWatchHistory, toggleWatchlist } from '@/lib/supabase';
+import { getUserWatchlist, getUserWatchHistory, toggleWatchlist } from '@/lib/db';
 import { Watchlist, WatchHistory } from '@/types';
 import { Bookmark, Play, Trash2, Clock, Loader2 } from 'lucide-react';
 

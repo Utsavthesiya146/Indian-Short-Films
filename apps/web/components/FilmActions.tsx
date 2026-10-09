@@ -9,7 +9,7 @@ import {
   toggleWatchlist,
   checkInWatchlist,
   getCurrentSession
-} from '@/lib/supabase';
+} from '@/lib/db';
 
 interface FilmActionsProps {
   filmId: string;

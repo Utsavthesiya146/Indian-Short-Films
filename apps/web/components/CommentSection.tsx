@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { MessageCircle, Send, Flag, Loader2 } from 'lucide-react';
-import { getFilmComments, createComment, createReport } from '@/lib/supabase';
+import { getFilmComments, createComment, createReport } from '@/lib/db';
 import { Comment } from '@/types';
 
 interface CommentSectionProps {

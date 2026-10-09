@@ -3,29 +3,16 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Film, Search, PlusCircle, Shield, Menu, X, LogIn, LogOut, User } from 'lucide-react';
-import { supabase, signOutUser } from '@/lib/supabase';
-import { User as SupabaseUser } from '@supabase/supabase-js';
+import { signOut, useSession } from 'next-auth/react';
 
 export const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [user, setUser] = useState<SupabaseUser | null>(null);
-
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null);
-    });
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
+  const { data: session } = useSession();
+  const user = session?.user;
 
   const handleLogout = async () => {
     try {
-      await signOutUser();
-      setUser(null);
+      await signOut();
     } catch {
       // Fail silently
     }

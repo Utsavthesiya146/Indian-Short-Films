@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/models/film_model.dart';
-import '../../../../core/services/supabase_service.dart';
+import '../../../../core/services/api_service.dart';
+import 'video_player_screen.dart';
 
 class FilmDetailScreen extends StatefulWidget {
   final FilmModel film;
@@ -14,7 +15,7 @@ class FilmDetailScreen extends StatefulWidget {
 }
 
 class _FilmDetailScreenState extends State<FilmDetailScreen> {
-  final SupabaseService _supabaseService = SupabaseService();
+  final ApiService _apiService = ApiService();
   final TextEditingController _reviewController = TextEditingController();
 
   bool _isLiked = false;
@@ -32,14 +33,14 @@ class _FilmDetailScreenState extends State<FilmDetailScreen> {
   }
 
   Future<void> _checkStatus() async {
-    final user = _supabaseService.currentUser;
+    final user = await _apiService.getCurrentUser();
     if (user != null) {
       // Load current user interaction state if logged in
     }
   }
 
   Future<void> _handleLike() async {
-    final user = _supabaseService.currentUser;
+    final user = await _apiService.getCurrentUser();
     if (user == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Please sign in to like films.')),
@@ -48,7 +49,7 @@ class _FilmDetailScreenState extends State<FilmDetailScreen> {
     }
 
     try {
-      final nowLiked = await _supabaseService.toggleLike(widget.film.id);
+      final nowLiked = await _apiService.toggleLike(widget.film.id);
       setState(() {
         _isLiked = nowLiked;
         _likesCount += nowLiked ? 1 : -1;
@@ -61,7 +62,7 @@ class _FilmDetailScreenState extends State<FilmDetailScreen> {
   }
 
   Future<void> _handleWatchlist() async {
-    final user = _supabaseService.currentUser;
+    final user = await _apiService.getCurrentUser();
     if (user == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Please sign in to manage your watchlist.')),
@@ -70,7 +71,7 @@ class _FilmDetailScreenState extends State<FilmDetailScreen> {
     }
 
     try {
-      final nowWatch = await _supabaseService.toggleWatchlist(widget.film.id);
+      final nowWatch = await _apiService.toggleWatchlist(widget.film.id);
       setState(() {
         _inWatchlist = nowWatch;
       });
@@ -88,7 +89,7 @@ class _FilmDetailScreenState extends State<FilmDetailScreen> {
     final text = _reviewController.text.trim();
     if (text.isEmpty) return;
 
-    final user = _supabaseService.currentUser;
+    final user = await _apiService.getCurrentUser();
     if (user == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Please sign in to post a review.')),
@@ -99,11 +100,11 @@ class _FilmDetailScreenState extends State<FilmDetailScreen> {
     setState(() => _isSubmitting = true);
 
     try {
-      await _supabaseService.createReview(
-        filmId: widget.film.id,
-        content: text,
-        stars: _selectedStars,
-      );
+      // await _apiService.createReview(
+      //   filmId: widget.film.id,
+      //   content: text,
+      //   stars: _selectedStars,
+      // );
       _reviewController.clear();
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -140,13 +141,31 @@ class _FilmDetailScreenState extends State<FilmDetailScreen> {
           children: [
             
             // Poster / Media Banner Container
-            Container(
-              height: 220,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: AppColors.border),
-              ),
+            GestureDetector(
+              onTap: () {
+                if (widget.film.videoUrl.isNotEmpty) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => VideoPlayerScreen(
+                        videoUrl: widget.film.videoUrl,
+                        title: widget.film.title,
+                      ),
+                    ),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Video source not available.')),
+                  );
+                }
+              },
+              child: Container(
+                height: 220,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(color: AppColors.border),
+                ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Stack(
@@ -157,7 +176,7 @@ class _FilmDetailScreenState extends State<FilmDetailScreen> {
                       fit: BoxFit.cover,
                     ),
                     Container(
-                      color: Colors.black.withOpacity(0.3),
+                      color: Colors.black.withValues(alpha: 0.3),
                       child: const Center(
                         child: CircleAvatar(
                           radius: 28,
@@ -170,6 +189,7 @@ class _FilmDetailScreenState extends State<FilmDetailScreen> {
                 ),
               ),
             ),
+          ),
 
             const SizedBox(height: 16),
 
@@ -265,7 +285,7 @@ class _FilmDetailScreenState extends State<FilmDetailScreen> {
               child: Row(
                 children: [
                   CircleAvatar(
-                    backgroundColor: AppColors.accent.withOpacity(0.2),
+                    backgroundColor: AppColors.accent.withValues(alpha: 0.2),
                     child: Text(widget.film.director.substring(0, 1), style: const TextStyle(color: AppColors.accent, fontWeight: FontWeight.bold)),
                   ),
                   const SizedBox(width: 12),

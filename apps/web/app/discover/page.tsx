@@ -4,7 +4,7 @@ import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { FilmCard } from '@/components/FilmCard';
 import { Film, Language, Genre } from '@/types';
-import { getFilms, getLanguages, getGenres } from '@/lib/supabase';
+import { getFilms, getLanguages, getGenres } from '@/lib/db';
 import { Search, SlidersHorizontal, X, Film as FilmIcon, Loader2 } from 'lucide-react';
 
 function DiscoverContent() {

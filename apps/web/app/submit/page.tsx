@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { PlusCircle, Upload, CheckCircle2, Film, ShieldAlert, Sparkles, Loader2 } from 'lucide-react';
-import { createSubmission, uploadFilmMedia } from '@/lib/supabase';
+import { createSubmission, uploadFilmMedia } from '@/lib/db';
 
 export default function SubmitFilmPage() {
   const [formData, setFormData] = useState({

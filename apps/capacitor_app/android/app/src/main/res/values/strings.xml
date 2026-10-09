@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Indian Short Films</string>
+    <string name="title_activity_main">Indian Short Films</string>
+    <string name="package_name">com.indianshortfilms.app</string>
+    <string name="custom_url_scheme">com.indianshortfilms.app</string>
+</resources>

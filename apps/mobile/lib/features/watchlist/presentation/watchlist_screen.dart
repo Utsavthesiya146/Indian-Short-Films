@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../../core/constants/app_colors.dart';
-import '../../../core/models/film_model.dart';
+import '../../../core/providers/film_provider.dart';
 import '../../film_detail/presentation/film_detail_screen.dart';
 
-class WatchlistScreen extends StatelessWidget {
+class WatchlistScreen extends ConsumerWidget {
   const WatchlistScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final films = FilmModel.sampleFilms;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final watchlistAsync = ref.watch(watchlistProvider);
 
     return Padding(
       padding: const EdgeInsets.all(16.0),
@@ -17,82 +18,99 @@ class WatchlistScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
-            children: const [
-              Icon(Icons.bookmark_rounded, color: AppColors.gold, size: 26),
-              SizedBox(width: 8),
-              Text(
+            children: [
+              const Icon(Icons.bookmark_rounded, color: AppColors.gold, size: 26),
+              const SizedBox(width: 8),
+              const Text(
                 'My Watchlist',
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
+              ),
+              const Spacer(),
+              IconButton(
+                icon: const Icon(Icons.refresh, color: AppColors.textSecondary),
+                onPressed: () => ref.invalidate(watchlistProvider),
               ),
             ],
           ),
           const SizedBox(height: 16),
 
           Expanded(
-            child: ListView.separated(
-              itemCount: films.length,
-              separatorBuilder: (_, __) => const SizedBox(height: 12),
-              itemBuilder: (context, index) {
-                final film = films[index];
-                return GestureDetector(
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => FilmDetailScreen(film: film)),
-                  ),
-                  child: Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: AppColors.card,
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: AppColors.border),
-                    ),
-                    child: Row(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(12),
-                          child: CachedNetworkImage(
-                            imageUrl: film.posterUrl,
-                            width: 60,
-                            height: 80,
-                            fit: BoxFit.cover,
-                          ),
+            child: watchlistAsync.when(
+              data: (films) {
+                if (films.isEmpty) {
+                  return const Center(
+                    child: Text('Your watchlist is empty.', style: TextStyle(color: AppColors.textSecondary)),
+                  );
+                }
+                return ListView.separated(
+                  itemCount: films.length,
+                  separatorBuilder: (_, __) => const SizedBox(height: 12),
+                  itemBuilder: (context, index) {
+                    final film = films[index];
+                    return GestureDetector(
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => FilmDetailScreen(film: film)),
+                      ),
+                      child: Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: AppColors.card,
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(color: AppColors.border),
                         ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                film.title,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white),
+                        child: Row(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(12),
+                              child: CachedNetworkImage(
+                                imageUrl: film.posterUrl,
+                                width: 60,
+                                height: 80,
+                                fit: BoxFit.cover,
+                                errorWidget: (context, url, error) => const Icon(Icons.broken_image),
                               ),
-                              const SizedBox(height: 4),
-                              Text(
-                                'Dir. ${film.director}',
-                                style: const TextStyle(fontSize: 11, color: AppColors.textSecondary),
+                            ),
+                            const SizedBox(width: 12),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    film.title,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white),
+                                  ),
+                                  const SizedBox(height: 4),
+                                  Text(
+                                    'Dir. ${film.director}',
+                                    style: const TextStyle(fontSize: 11, color: AppColors.textSecondary),
+                                  ),
+                                  const SizedBox(height: 4),
+                                  Text(
+                                    '★ ${film.ratingAverage} (${film.ratingCount})',
+                                    style: const TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: AppColors.gold),
+                                  ),
+                                ],
                               ),
-                              const SizedBox(height: 4),
-                              Text(
-                                '★ ${film.ratingAverage} (${film.ratingCount})',
-                                style: const TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: AppColors.gold),
+                            ),
+                            IconButton(
+                              icon: const Icon(Icons.play_circle_fill_rounded, color: AppColors.accent, size: 36),
+                              onPressed: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (_) => FilmDetailScreen(film: film)),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                        IconButton(
-                          icon: const Icon(Icons.play_circle_fill_rounded, color: AppColors.accent, size: 36),
-                          onPressed: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (_) => FilmDetailScreen(film: film)),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                      ),
+                    );
+                  },
                 );
               },
+              loading: () => const Center(child: CircularProgressIndicator()),
+              error: (e, s) => Center(child: Text('Error: $e')),
             ),
           ),
         ],

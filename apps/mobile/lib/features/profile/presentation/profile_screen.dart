@@ -1,23 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/constants/app_colors.dart';
-import '../../../core/services/supabase_service.dart';
+import '../../../core/services/api_service.dart';
 import '../../submission/presentation/submit_film_screen.dart';
+import '../../auth/presentation/login_screen.dart';
+import '../../auth/presentation/auth_gate.dart';
 
-class ProfileScreen extends StatefulWidget {
+class ProfileScreen extends ConsumerStatefulWidget {
   const ProfileScreen({super.key});
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  ConsumerState<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
-  final SupabaseService _supabaseService = SupabaseService();
+class _ProfileScreenState extends ConsumerState<ProfileScreen> {
+  final ApiService _apiService = ApiService();
+  Map<String, dynamic>? _user;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUser();
+  }
+
+  Future<void> _loadUser() async {
+    final user = await _apiService.getCurrentUser();
+    if (mounted) {
+      setState(() {
+        _user = user;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    final user = _supabaseService.currentUser;
-    final email = user?.email ?? 'Audience Member';
-    final name = user?.userMetadata?['full_name'] ?? (email.contains('@') ? email.split('@')[0] : 'User');
+    final user = _user;
+    final email = user?['email'] ?? 'Audience Member';
+    final name = user?['username'] ?? (email.contains('@') ? email.split('@')[0] : 'User');
 
     return SingleChildScrollView(
       padding: const EdgeInsets.all(20.0),
@@ -34,7 +53,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             child: CircleAvatar(
               radius: 42,
-              backgroundColor: AppColors.accent.withOpacity(0.2),
+              backgroundColor: AppColors.accent.withValues(alpha: 0.2),
               child: Text(
                 name.substring(0, 1).toUpperCase(),
                 style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: AppColors.accent),
@@ -110,12 +129,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
             subtitle: user != null ? 'Log out of this device' : 'Sign in to your account',
             onTap: () async {
               if (user != null) {
-                await _supabaseService.signOut();
-                setState(() {});
-                if (mounted) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Signed out successfully.')),
-                  );
+                await _apiService.signOut();
+                ref.invalidate(authStateProvider);
+              } else {
+                final result = await Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const LoginScreen()),
+                );
+                if (result == true) {
+                  _loadUser();
                 }
               }
             },
@@ -154,7 +176,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         leading: Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: iconColor.withOpacity(0.15),
+            color: iconColor.withValues(alpha: 0.15),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Icon(icon, color: iconColor, size: 22),
